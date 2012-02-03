@@ -40,6 +40,8 @@ class Album(models.Model):
     description = models.TextField()
     release_date = models.DateField()
 #    cover_art = models.ImageField()
+    def __unicode__(self):
+        return self.title
 
 class Track(models.Model):
     title = models.CharField(max_length=128)
@@ -48,6 +50,8 @@ class Track(models.Model):
     artists = models.ManyToManyField(Artist)
     album = models.ForeignKey(Album)
     length = models.IntegerField() #Length in seconds
+    def __unicode__(self):
+        return self.title
 
 class Image(models.Model):
     name = models.CharField(max_length=128)
@@ -60,5 +64,6 @@ class Message(models.Model):
     recipients = models.ManyToManyField(User, related_name='received')
 
 class Post(models.Model):
+    author = models.ForeignKey(MusicEntity)
     title = models.CharField(max_length=128)
     body = models.TextField()
