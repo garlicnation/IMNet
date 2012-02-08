@@ -9,6 +9,7 @@ class MusicEntity(models.Model):
     fans = models.ManyToManyField(User, related_name='favorites')
     genre = models.TextField()
     website = models.URLField()
+    main_image = models.ForeignKey('Image', blank=True, null=True)
     def __unicode__(self):
         return self.name
 
@@ -49,6 +50,9 @@ class Track(models.Model):
 class Image(models.Model):
     name = models.CharField(max_length=128)
     owner = models.ForeignKey(MusicEntity)
+    image = models.ImageField(upload_to='images/')
+    def __unicode__(self):
+        return self.name
 
 class Message(models.Model):
     subject = models.CharField(max_length=128)
