@@ -6,7 +6,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'IMNet.views.home', name='home'),
+     url(r'^$', 'imnet.views.index', name='home'),
+    url(r'^artists/(?P<artist_id>\d+)/$', 'imnet.views.artist'),
     # url(r'^IMNet/', include('IMNet.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
