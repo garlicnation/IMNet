@@ -19,3 +19,8 @@ def artist(request,artist_id):
     except Artist.DoesNotExist:
         raise Http404
     return render_to_response('imnet/artist.html', {'artist':a})
+
+def artists(request):
+    Artists = Artist.objects.all()[:]
+    print Artists
+    return render_to_response('imnet/artists.html', {'artists': Artists})

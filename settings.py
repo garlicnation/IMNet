@@ -69,6 +69,7 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+    '/Users/ajo/workspace/imnet/IMNet/imnet/static',
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -106,7 +107,8 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "J:/Programming/CS437/IMNet/imnet/templates"
+    "J:/Programming/CS437/IMNet/imnet/templates",
+    "/Users/ajo/workspace/imnet/IMNet/imnet/templates",
 )
 
 INSTALLED_APPS = (

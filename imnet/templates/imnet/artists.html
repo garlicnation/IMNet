@@ -1,0 +1,13 @@
+{% extends "imnet/base.html" %}
+{% block title %} List of artists {% endblock %}
+{% block contentPane %}
+{% if artists %}
+<ul>
+    {% for artist in artists %}
+    <li><a href="/artists/{{ artist.id }}/">{{ artist.name }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No artists listed.</p>
+{% endif %}
+{% endblock %}

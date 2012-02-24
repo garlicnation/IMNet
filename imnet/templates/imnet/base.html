@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{% block title %}IM Net{% endblock %}</title>
+
+    <link href="/static/css/main.css" rel="stylesheet" type="text/css" />
+    <!--<link href="animations.css" rel="stylesheet" type="text/css" />-->
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Cabin+Condensed:500' rel='stylesheet' type='text/css' />
+</head>
+
+<body>
+<div id="wrapper">
+    <div id="header"><img src="/static/images/logo_new.png" title="IM-Net Logo" alt="IM-Net Logo" /></div>
+
+    <div id="nav">
+        {% block nav %}
+        <ul>
+            <li><a href="messages" title="Inbox">Messages</a></li>
+            <li><a href="/artists" title="Artist Home">Artist</a></li>
+            <li><a href="labels" title="Label Management">Label</a></li>
+            <li><a href="venues" title="Venue Management">Venue</a></li>
+            <li><a href="fans" title="Fanships Management">Fan</a></li>
+        </ul>
+        {% endblock nav %}
+    </div>
+    <div id="content">
+        {% block content %}
+        <div id="contentTabs">
+            {% block contentTabs %}
+            <ul>
+                <li><a href="#t1">Tab 1</a></li>
+                <li><a href="#t2">Tab 2</a></li>
+                <li><a href="#t3">Tab 3</a></li>
+                <li><a href="#t4">Tab 4</a></li>
+            </ul>
+            {% endblock contentTabs %}
+        </div>
+        <div id="contentPane">
+            {% block contentPane %}
+            <p>All page content here</p>
+            {% endblock contentPane %}
+        </div>
+        {% endblock content %}
+    </div>
+    <div id="footer">
+        <ul>
+            <li><a href="#" title="About Us">About IM-Net</a></li>
+            <li> | </li>
+            <li><a href="#" title="Site Map">Site Map</a></li>
+            <li> | </li>
+            <li><a href="#" title="Contact Us">Contact</a></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
