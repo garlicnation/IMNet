@@ -2,18 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>{% block title %}IM Net{% endblock %}</title>
-
+    <title>IM-Net</title>
     <link href="/static/css/main.css" rel="stylesheet" type="text/css" />
-    <!--<link href="animations.css" rel="stylesheet" type="text/css" />-->
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Cabin+Condensed:500' rel='stylesheet' type='text/css' />
 </head>
 
 <body>
 <div id="wrapper">
+    <div id="login"><a href="#login">Login/Logout</a></div>
     <div id="header"><img src="/static/images/logo_new.png" title="IM-Net Logo" alt="IM-Net Logo" /></div>
-
     <div id="nav">
         {% block nav %}
         <ul>
@@ -25,24 +23,22 @@
         </ul>
         {% endblock nav %}
     </div>
-    <div id="content">
-        {% block content %}
+    <div id="contentPane">
+        {% block contentPane %}
         <div id="contentTabs">
-            {% block contentTabs %}
-            <ul>
+            <ul id="tabs">
+                {% block contentTabs %}
                 <li><a href="#t1">Tab 1</a></li>
                 <li><a href="#t2">Tab 2</a></li>
                 <li><a href="#t3">Tab 3</a></li>
                 <li><a href="#t4">Tab 4</a></li>
+                {% endblock contentTabs %}
             </ul>
-            {% endblock contentTabs %}
         </div>
-        <div id="contentPane">
-            {% block contentPane %}
+         {% block content %}
             <p>All page content here</p>
-            {% endblock contentPane %}
-        </div>
         {% endblock content %}
+        {% endblock contentPane %}
     </div>
     <div id="footer">
         <ul>

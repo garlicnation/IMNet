@@ -123,7 +123,16 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'imnet',
+    'registration',
 )
+
+ACCOUNT_ACTIVATION_DAYS = 7
+
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_HOST_PASSWORD='imnetpass'
+EMAIL_HOST_USER='imnet.cs437@gmail.com'
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -135,14 +144,14 @@ LOGGING = {
     'disable_existing_loggers': False,
     'handlers': {
         'mail_admins': {
-            'level': 'ERROR',
+            'level': 'DEBUG',
             'class': 'django.utils.log.AdminEmailHandler'
         }
     },
     'loggers': {
         'django.request': {
             'handlers': ['mail_admins'],
-            'level': 'ERROR',
+            'level': 'DEBUG',
             'propagate': True,
         },
     }

@@ -8,6 +8,8 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
      url(r'^$', 'imnet.views.index', name='home'),
+    (r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'imnet/login.html'}),
+    (r'^accounts/', include('registration.urls')),
     url(r'^artists/$', 'imnet.views.artists'),
     url(r'^artists/(?P<artist_id>\d+)/$', 'imnet.views.artist'),
     # url(r'^IMNet/', include('IMNet.foo.urls')),
