@@ -1,13 +1,19 @@
 \documentclass[letterpaper]{article}
+
 \usepackage[empty]{fullpage}
 \usepackage{color}
 \usepackage[pdftex]{graphicx}
-\definecolor{blue}{RGB}{1,77,255}
+
+\definecolor{section}{RGB}{54,95,145}
+\definecolor{subsection}{RGB}{79,129,189}
+\definecolor{subsubsection}{RGB}{79,129,189}
+
 \addtolength{\oddsidemargin}{-0.375in}
 \addtolength{\evensidemargin}{0.375in}
 \addtolength{\textwidth}{0.5in}
 \addtolength{\topmargin}{-0.375in}
 \addtolength{\textheight}{0.75in}
+
 \raggedright
 
 \graphicspath{{./images/}}
@@ -19,9 +25,9 @@
 
 \eject
 
-\section{Introduction}
+\section{\textcolor{section}{Introduction}}
 
-\subsection{Purpose}
+\subsection{\textcolor{subsection}{Purpose}}
 
 The purpose of this document is four-fold:
 
@@ -37,7 +43,7 @@ The purpose of this document is four-fold:
 
 The complete definition of all IM-Net requirements provides the source requirement inputs for the development of the subsequent supporting software subsystems documents.
 
-\subsection{Scope}
+\subsection{\textcolor{subsection}{Scope}}
 
 The documentation developed as part of this CS437 class, starts from the SRD prepared in CS337 or in previous CS437 classes with a much reduced scope.  The scope of this document includes the following:
 
@@ -51,17 +57,17 @@ The documentation developed as part of this CS437 class, starts from the SRD pre
 \item  The functional requirements defined in the IM-Net Requirements section have been expanded to include more specific hardware requirements.
 \end{enumerate}
 
-\subsubsection{Organization}
+\subsubsection{\textcolor{subsubsection}{Organization}}
 
 The organization of this document provides a natural 'flow' or allocation of requirements to each succeeding section. Details regarding the overall document structure are discussed in sub-section 1.4.
 
-\subsubsection{Relationship to Other Documents}
+\subsubsection{\textcolor{subsubsection}{Relationship to Other Documents}}
 
 The IM-Net SRD/SDD/STP/SID is a complete self contained document. Some relationships to other documents in the literature are indicated below in sub-section 1.5.
 
-\subsection{Project Name Architecture}
+\subsection{\textcolor{subsection}{Project Name Architecture}}
  
-\subsubsection{Detailed Context Diagram (DFD Level 0)}
+\subsubsection{\textcolor{subsubsection}{Detailed Context Diagram (DFD Level 0)}}
 
 The IM-Net architecture is summarized in the Context Diagram (DFD Level 0) given below. A more detailed Functional Description is given in Section 2 of this document.\\
 
@@ -90,7 +96,7 @@ IM-Net is implemented primary using the Django content management system, a web-
 
 TODO: WRITE MORE HERE
 
-\subsection{Documentation Development Process}
+\subsection{\textcolor{subsection}{Documentation Development Process}}
 
 The IM-Net detailed functional description is documented in section 2.0. Basically, Section 2 is a succinct software description document. The overall detailed functional description is based on higher level DFDs (above level 1). All major functional units are described in detail in this part of the document.
 
@@ -103,29 +109,29 @@ Section 5 includes elements of a partial implementation of the IM-Net. This sect
 Section 6 is the last major section in this document and includes the overall Test Plan (TP) of the IM-Net. The test plan details the various techniques used to test the requirements and it also includes a Validation Matrix where each requirement specified in section 3 is listed with its corresponding validation method. In addition, TP specifies the mandated peer reviews needed to validate the stakeholders part of the requirements.
 
  
-\subsection{References}
+\subsection{\textcolor{subsection}{References}}
 
 All references used in the creation of this document are listed below.
 
-\subsubsection{Controlling Documents}
+\subsubsection{\textcolor{subsubsection}{Controlling Documents}}
 
 There is no document controlling this document.
 
-\subsubsection{Applicable Documents}
+\subsubsection{\textcolor{subsubsection}{Applicable Documents}}
 
 No addition applicable document has been used in the production of this document.
 
-\subsubsection{Standards}
+\subsubsection{\textcolor{subsection}{Standards}}
 
 No Standard has been used in the creation of this document. However, some Standards described in textbooks have been examined as a reference. In particular, the IEEE standard has been briefly discussed in class.
 
 \eject
 
-\section{Detailed Function Description of IM-Net}
+\section{\textcolor{section}{Detailed Function Description of IM-Net}}
 
-\subsection{Detailed IM-Net Functional Description}
+\subsection{\textcolor{subsection}{Detailed IM-Net Functional Description}}
 
-\subsubsection{High Level DFDs}
+\subsubsection{\textcolor{subsubsection}{High Level DFDs}}
 
 The IM-Net major functional subunits are shown in the DFD Level 1 depicted below:
 
@@ -137,21 +143,21 @@ The IM-Net major functional subunits are shown in the DFD Level 1 depicted below
 \end{figure}
 \eject
  
-\subsubsection{Detailed Functional Description of the IM-Net Major Units}
+\subsubsection{\textcolor{subsubsection}{Detailed Functional Description of the IM-Net Major Units}}
 
 The description of the function of the IM-Net major functional units shown in Figure 2-X follows.
 
 \eject
 
-\section{The IM-Net Requirements}
+\section{\textcolor{section}{The IM-Net Requirements}}
  
-\subsection{IM-Net Functional Requirements}
+\subsection{\textcolor{subsection}{IM-Net Functional Requirements}}
 
 This Section collects all the IM-Net Functional Requirements. This section includes the complete set of functional requirements with explanation and rational where the statement of the requirement was deemed insufficient or needing additional background/justification. All requirements relate to the design modules described in Section 2. An effort has been made to standardize the correlation between the design modules and the requirements to make their access and organization more consistent. For example, requirement number ``n'' affecting module 2.1 will be labeled 3.1-n.
 
 \textbf{TODO: WRITE FUNCTIONAL REQUIREMENTS}\\
 
-\subsection{IM-Net Non-Functional Requirements}
+\subsection{\textcolor{subsection}{IM-Net Non-Functional Requirements}}
 
 This Section collects all the IM-Net Non-Functional Requirements. All non-functional requirements are numbered ``NF -- n'' where ``n'' indicates the n${}^{th}$ requirement.
 
@@ -167,7 +173,7 @@ This Section collects all the IM-Net Non-Functional Requirements. All non-functi
 \item  IM-Net Non Functional Requirement \#5
 \end{enumerate}
 
-\subsection{IM-Net Hardware Requirements}
+\subsection{\textcolor{subsection}{IM-Net Hardware Requirements}}
 
 This Section collects all the IM-Net Hardware Requirements. All hardware requirements are numbered ``H -- n'' where ``n'' indicates the n${}^{th}$ requirement.
 
@@ -185,7 +191,7 @@ This Section collects all the IM-Net Hardware Requirements. All hardware require
 
 \eject
 
-\section{IM-Net Detailed Design}
+\section{\textcolor{section}{IM-Net Detailed Design}}
 
 In this section, the IM-Net described in Section 2 with requirements listed in Section 3 will be designed in detail including several higher level DFDs. Each major module detailed design is included in correspondence with the design sections defined in Section 2 and responding to the requirements listed in its correlated sub-section in chapter 3.
 
@@ -196,15 +202,15 @@ Figure 4-1 shows the four sub-modules that comprise module 2.1. Next, Figure 4-2
 \eject 
 
  
-\section{IM-Net Elements of Implementation}
+\section{\textcolor{section}{IM-Net Elements of Implementation}}
 
 In this section (some of) the modules designed in Section 4 with requirements listed in Section 3 will be implemented initially at least at the level of pseudo code. Where possible, actual code will be provided. Each module is implemented in correspondence with the design sections defined in section 2 and responding to the requirements listed in its correlated sub-section in chapter 3.
 
 \eject 
 
-\section{IM-Net Test Plan}
+\section{\textcolor{section}{IM-Net Test Plan}}
 
-\subsection{Introduction}
+\subsection{\textcolor{subsection}{Introduction}}
 
 In this section the testing methodology to be used to Verify and Validate each of the requirements listed in section 3.0 has been identified. At points some additional testing may be required and they shall be documented as an attachment to this document. 
 
@@ -219,16 +225,16 @@ The methodologies and testing strategies identified at this point include three 
 \end{enumerate}
 
  
-\subsection{Functional Requirements Validation Matrix}
+\subsection{\textcolor{subsection}{Functional Requirements Validation Matrix}}
 The IM-Net Functional and Performance Requirements Validation Matrix is given below.
 \eject 
  
-\section{Acronyms}
+\section{\textcolor{section}{Acronyms}}
 \textbf{IM-Net}  Independent Music Network
 
 \eject 
  
-\section{Data Dictionary}
+\section{\textcolor{section}{Data Dictionary}}
 
 \underbar{Item 1}: Description. 
 
