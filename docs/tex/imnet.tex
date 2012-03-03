@@ -1,7 +1,7 @@
 \documentclass[letterpaper]{article}
 \usepackage[empty]{fullpage}
 \usepackage{color}
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 \definecolor{blue}{RGB}{1,77,255}
 \addtolength{\oddsidemargin}{-0.375in}
 \addtolength{\evensidemargin}{0.375in}
@@ -15,6 +15,7 @@
 \begin{document}
 
 \tableofcontents
+\listoffigures
 
 \eject
 
@@ -67,8 +68,8 @@ The IM-Net architecture is summarized in the Context Diagram (DFD Level 0) given
 % Note: All image files should have a width < 7.75in
 \begin{figure}[h]
 \centering
-\includegraphics{DFD_level_0.png}
-\caption{DFD Level 0}
+\includegraphics{DFD_level_0}
+\caption{Context Diagram (DFD Level 0)}
 \label{fig:DFD_level_0}
 \end{figure}
 \eject
@@ -128,8 +129,13 @@ No Standard has been used in the creation of this document. However, some Standa
 
 The IM-Net major functional subunits are shown in the DFD Level 1 depicted below:
 
-\textbf{TODO: INSERT DFD LEVEL 1}
-
+\begin{figure}[h!]
+\centering
+\includegraphics{DFD_level_1.png}
+\caption{DFD Level 1}
+\label{fig:DFD_level_1}
+\end{figure}
+\eject
  
 \subsubsection{Detailed Functional Description of the IM-Net Major Units}
 
