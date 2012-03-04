@@ -124,6 +124,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'imnet',
     'registration',
+    'messages',
 )
 
 ACCOUNT_ACTIVATION_DAYS = 7

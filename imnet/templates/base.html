@@ -10,12 +10,21 @@
 
 <body>
 <div id="wrapper">
-    <div id="login"><a href="#login">Login/Logout</a></div>
+    <div id="login">
+        {% if user.is_authenticated %}
+        Welcome, {{ user.username }}. <a href="/accounts/logout">Logout!</a>
+        {% else %}
+        <a href="/accounts/login">Login</a>/<a href="/accounts/register">Register</a>
+        {% endif %}
+
+    </div>
     <div id="header"><img src="/static/images/logo_new.png" title="IM-Net Logo" alt="IM-Net Logo" /></div>
     <div id="nav">
         {% block nav %}
         <ul>
-            <li><a href="messages" title="Inbox">Messages</a></li>
+            <li><a href="/messages" title="Inbox">Messages</a></li>
+                {% block sidebar %}
+                {% endblock %}
             <li><a href="/artists" title="Artist Home">Artist</a></li>
             <li><a href="labels" title="Label Management">Label</a></li>
             <li><a href="venues" title="Venue Management">Venue</a></li>
