@@ -12,6 +12,12 @@
 \newcounter{rcounter}						% For counting in tabular environments
 \newcommand\rnumber{\stepcounter{rcounter}\arabic{rcounter}}
 
+% We are customizing the \Section command here so that all figures in each section
+% follow the 'Figure s-n' convention, where 's' is the section number and 'n' is the
+% nth figure in the section.
+\renewcommand{\thefigure}{\thesection-\arabic{figure}}
+\newcommand{\Section}[1]{\section{#1} \setcounter{figure}{0}}
+
 \definecolor{section}{RGB}{54,95,145}
 \definecolor{subsection}{RGB}{79,129,189}
 \definecolor{subsubsection}{RGB}{79,129,189}
@@ -34,7 +40,7 @@
 
 \eject
 
-{\textcolor{section}{\section{Introduction}}
+{\textcolor{section}{\Section{Introduction}}
 
 \textcolor{subsection}{\subsection{Purpose}}
 
@@ -135,7 +141,7 @@ No Standard has been used in the creation of this document. However, some Standa
 
 \eject
 
-\textcolor{section}{\section{Detailed Function Description of IM-Net}}
+\textcolor{section}{\Section{Detailed Function Description of IM-Net}}
 
 \textcolor{subsection}{\subsection{Detailed IM-Net Functional Description}}
 
@@ -172,7 +178,7 @@ The Media module handles the safe storage of all IM-Net media files in the IM-Ne
 
 \eject
 
-\textcolor{section}{\section{The IM-Net Requirements}}
+\textcolor{section}{\Section{The IM-Net Requirements}}
  
 \textcolor{subsection}{\subsection{IM-Net Functional Requirements}}
 
@@ -281,7 +287,7 @@ This Section collects all the IM-Net Hardware Requirements. All hardware require
 
 \eject
 
-\textcolor{section}{\section{IM-Net Detailed Design}}
+\textcolor{section}{\Section{IM-Net Detailed Design}}
 
 In this section, the IM-Net described in Section 2 with requirements listed in Section 3 will be designed in detail including several higher level DFDs. Each major module detailed design is included in correspondence with the design sections defined in Section 2 and responding to the requirements listed in its correlated sub-section in chapter 3.
 
@@ -317,13 +323,13 @@ Figure 4-1 shows the four sub-modules that comprise module 2.1. Next, Figure 4-2
 \eject
 
  
-\textcolor{section}{\section{IM-Net Elements of Implementation}}
+\textcolor{section}{\Section{IM-Net Elements of Implementation}}
 
 In this section (some of) the modules designed in Section 4 with requirements listed in Section 3 will be implemented initially at least at the level of pseudo code. Where possible, actual code will be provided. Each module is implemented in correspondence with the design sections defined in section 2 and responding to the requirements listed in its correlated sub-section in chapter 3.
 
 \eject 
 
-\textcolor{section}{\section{IM-Net Test Plan}}
+\textcolor{section}{\Section{IM-Net Test Plan}}
 
 \textcolor{subsection}{\subsection{Introduction}}
 
@@ -346,7 +352,7 @@ The IM-Net Functional and Performance Requirements Validation Matrix is given be
 
 \appendix
 
-\textcolor{section}{\section{Acronyms}}
+\textcolor{section}{\Section{Acronyms}}
 
 \textbf{DFD} Data Flow Diagram
 
@@ -357,7 +363,7 @@ The IM-Net Functional and Performance Requirements Validation Matrix is given be
 
 \eject 
  
-\textcolor{section}{\section{Data Dictionary}}
+\textcolor{section}{\Section{Data Dictionary}}
 
 \underline{Django}: An open source web application framework, written in Python, which follows the Model-View-Controller architectural pattern.
 
