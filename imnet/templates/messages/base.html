@@ -16,7 +16,7 @@
 {% endblock %}
 {% block contentTabs %}
 <li id="tab_inbox"><a href="{% url messages_inbox %} ">&raquo;&nbsp;{% trans "Inbox" %}</a></li>
-<li><a href="{% url messages_outbox %} ">&raquo;&nbsp;{% trans "Sent Messages" %}</a></li>
+<li id="tab_outbox"><a href="{% url messages_outbox %} ">&raquo;&nbsp;{% trans "Sent Messages" %}</a></li>
 <li id="tab_newmessage"><a href="{% url messages_compose %} ">&raquo;&nbsp;{% trans "New Message" %}</a></li>
-<li><a href="{% url messages_trash %} ">&raquo;&nbsp;{% trans "Trash" %}</a></li>
+<li id="tab_trash"><a href="{% url messages_trash %} ">&raquo;&nbsp;{% trans "Trash" %}</a></li>
 {% endblock contentTabs %}

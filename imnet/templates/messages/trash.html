@@ -1,5 +1,19 @@
 {% extends "messages/base.html" %} 
-{% load i18n %} 
+{% load i18n %}
+
+{% block head %}
+{{ block.super }}
+
+<script>
+    $(document).ready(function() {
+
+
+        $("#tab_trash").addClass("selected");
+    });
+</script>
+
+{% endblock head %}
+
 {% block content %} 
 <h1>{% trans "Deleted Messages" %}</h1>
 {% if message_list %} 
