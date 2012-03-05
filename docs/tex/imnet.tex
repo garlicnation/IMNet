@@ -191,12 +191,37 @@ This Section collects all the IM-Net Functional Requirements. This section inclu
 \hline 
 Requirement No. & Requirement Description \\ 
 \hline
-\textbf{3.1-\rnumber} & IM-Net generated HTML shall conform with the XHTML 1.0 Transitional standard set by the W3C. \\ 
+& \textbf{Web-Server Daemon:} \\
+\hline
+\textbf{3.1-\rnumber} & IM-Net shall run a web-server daemon to interface with the user's browser. \\ 
 \hline 
-\textbf{3.1-\rnumber} & IM-Net generated CSS shall conform with the CSS level 3 standard set by the W3C. \\ 
+\textbf{3.1-\rnumber} & IM-Net web-server daemon shall route all requests to the Content Management controller function. \\ 
 \hline 
-\textbf{3.1-\rnumber} & IM-Net templates shall conform to  \\ 
+\textbf{3.1-\rnumber} & IM-Net web-server daemon shall route all responses to the user's browser. \\ 
+\hline  
+& \textbf{Templates:} \\
+\hline
+\textbf{3.1-\rnumber} & IM-Net HTML templates shall conform with the XHTML 1.0 Transitional standard set by the W3C. \\ 
 \hline 
+\textbf{3.1-\rnumber} & IM-Net CSS templates shall conform with the CSS level 3 standard set by the W3C. \\ 
+\hline 
+\textbf{3.1-\rnumber} & IM-Net shall store all template files on the server's local filesystem. \\ 
+\hline 
+& \textbf{Interpreter:} \\
+\hline
+\textbf{3.1-\rnumber} & IM-Net shall generate dynamic HTML/CSS code using data from the Content Management Controller and the pre-defined template files. \\ 
+\hline 
+\textbf{3.1-\rnumber} & IM-Net shall . \\ 
+\hline 
+\textbf{3.1-\rnumber} & IM-Net shall. \\ 
+\hline 
+\textbf{3.1-\rnumber} & IM-Net shall. \\ 
+\hline 
+\textbf{3.1-\rnumber} & IM-Net shall. \\ 
+\hline 
+\textbf{3.1-\rnumber} & IM-Net shall. \\ 
+\hline 
+
 \end{tabular} 
 \end{center}
 
@@ -208,9 +233,11 @@ Requirement No. & Requirement Description \\
 \hline 
 Requirement No. & Requirement Description \\ 
 \hline
-\textbf{3.2-\rnumber} & IM-Net shall receive all requests from the web-server daemon and route accordingly through a controller function. \\ 
+& \textbf{Controller:} \\
+\hline
+\textbf{3.2-\rnumber} & IM-Net shall route all server requests . \\ 
 \hline 
-\textbf{3.2-\rnumber} & IM-Net shall  \\ 
+\textbf{3.2-\rnumber} & IM-Net shall route  \\ 
 \hline 
 \textbf{3.2-\rnumber} & IM-Net shall  \\ 
 \hline 
@@ -243,7 +270,7 @@ Requirement No. & Requirement Description \\
 \hline
 \textbf{3.2-\rnumber} & IM-Net shall authenticate all users before allowing users to change access. \\ 
 \hline 
-\textbf{3.2-\rnumber} & IM-Net shall  \\ 
+\textbf{3.2-\rnumber} & IM-Net shall verify all authentication information against the user registration data stored in the database. \\ 
 \hline 
 \textbf{3.2-\rnumber} & IM-Net shall  \\ 
 \hline 
@@ -255,7 +282,15 @@ Requirement No. & Requirement Description \\
 \hline
 \textbf{3.2-\rnumber} & IM-Net shall allow all users to communicate with each other through a built-in messaging interface. \\ 
 \hline 
-\textbf{3.2-\rnumber} & IM-Net messaging interface. \\ 
+\textbf{3.2-\rnumber} & IM-Net messaging interface shall include a inbox that contains all messages that have been sent to the user. \\ 
+\hline 
+\textbf{3.2-\rnumber} & IM-Net messaging interface shall include a sent messages folders that contains all messages that the user has sent to other users.  \\ 
+\hline 
+\textbf{3.2-\rnumber} & IM-Net shall  \\ 
+\hline 
+\textbf{3.2-\rnumber} & IM-Net messaging interface shall allow all messages to have a subject line. \\ 
+\hline 
+\textbf{3.2-\rnumber} & IM-Net shall  \\ 
 \hline 
 \textbf{3.2-\rnumber} & IM-Net shall  \\ 
 \hline 
