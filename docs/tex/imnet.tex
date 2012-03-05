@@ -352,29 +352,50 @@ Requirement No. & Requirement Description \\
 \hline 
 Requirement No. & Requirement Description \\ 
 \hline
+& \textbf{Admin Controller:} \\
+\hline
 \textbf{3.4-\rnumber} & IM-Net shall designate the highest level account setting as 'Administrator'. \\ 
 \hline
 \textbf{3.4-\rnumber} & IM-Net shall assign super-user privileges to all administrator designated accounts. \\ 
 \hline 
-\textbf{3.4-\rnumber} & IM-Net shall only allow existing administrator accounts to designate other accounts as administrator accounts. \\ 
+& \textbf{Admin Interface:} \\
+\hline
+\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated accounts to edit any Music-Entity data. \\ 
+\hline 
+\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated accounts to edit any Artists data. \\ 
+\hline 
+\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated accounts to edit any Label data. \\ 
+\hline 
+\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated account to edit any Venue data. \\ 
+\hline
+\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated accounts to delete any Music-Entity data. \\ 
+\hline 
+\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated accounts to delete any Artists data. \\ 
+\hline 
+\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated accounts to delete any Label data. \\ 
+\hline 
+\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated account to delete any Venue data. \\ 
+\hline
+
+\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated account to delete any other user account. \\ 
+\hline
+& \textbf{Shell Interface:} \\
+\hline
+\textbf{3.4-\rnumber} & IM-Net shall only allow shell interface access to administrator designated accounts. \\ 
+\hline 
+\textbf{3.4-\rnumber} & IM-Net shall only allow existing administrator accounts to designate other accounts as administrator accounts. \\
 \hline 
 \textbf{3.4-\rnumber} & IM-Net shall only allow accounts to be designated as administrator through the back-end shell interface. \\ 
 \hline 
 \textbf{3.4-\rnumber} & IM-Net shall require all administrator account passwords to be of character length greater than or equal to 10.  \\ 
 \hline 
 \textbf{3.4-\rnumber} & IM-Net shall require all administrator account passwords to contain both upper-case and lower-case alphabetic characters. \\
+\hline 
 \textbf{3.4-\rnumber} & IM-Net shall require all administrator account passwords to contain at least two digits. \\ 
 \hline 
 \textbf{3.4-\rnumber} & IM-Net shall require all administrator account password to contain at least one non-alphanumeric character. \\ 
 \hline 
-\textbf{3.4-\rnumber} & Requirement \\ 
-\hline 
-\textbf{3.4-\rnumber} & Requirement \\ 
-\hline 
-\textbf{3.4-\rnumber} & Requirement \\ 
-\hline 
-\textbf{3.4-\rnumber} & Requirement \\ 
-\hline 
+
 
 \end{tabular} 
 \end{center}
@@ -403,13 +424,9 @@ Requirement No. & Requirement Description \\
 \hline
 \textbf{3.5-\rnumber} & IM-Net shall ensure that all uploaded media files are tagged with title metadata. \\ 
 \hline
-\textbf{3.5-\rnumber} & IM-Net shall ensure that all uploaded media files are tagged with artists metadata. \\ 
+\textbf{3.5-\rnumber} & IM-Net shall ensure that all uploaded media files are tagged with artist(s) metadata. \\ 
 \hline
-\textbf{3.5-\rnumber} & IM-Net shall ensure that all uploaded media file artist tags match the user's Music-Entity name. \\ 
-\hline
-\textbf{3.5-\rnumber} &  \\ 
-\hline
-\textbf{3.5-\rnumber} &  \\ 
+\textbf{3.5-\rnumber} & IM-Net shall ensure that all uploaded media file artist(s) tags contain a match with the user's Music-Entity name. \\ 
 \hline
 & \textbf{Security:} \\
 \hline
@@ -425,12 +442,6 @@ Requirement No. & Requirement Description \\
 \hline
 \textbf{3.5-\rnumber} & IM-Net shall notify the user if any media file uploads are identified by the anti-virus as compromised by malicious code. \\ 
 \hline
-\textbf{3.5-\rnumber} & Requirement \\ 
-\hline
-\textbf{3.5-\rnumber} & Requirement \\ 
-\hline
-\textbf{3.5-\rnumber} & Requirement \\ 
-\hline
 \end{tabular} 
 \end{center}
 
@@ -440,9 +451,11 @@ This Section collects all the IM-Net Non-Functional Requirements. All non-functi
 
 \begin{list}{NF -- \arabic{qcounter}:~}{\usecounter{qcounter}}
 
-\item  IM-Net shall require minimal training for users who have experience with common web browsers and web-based applications.
+\item  IM-Net shall requires less than one hour training for users who have experience with common web browsers and web-based applications.
 
-\item  IM-Net shall be deployable to any Apache/SQL/Python/Django software stack within 5 hours of unpacking the IM-Net software package.
+\item  IM-Net shall requires less than one hour training for administrators who have experience programming Python and administrating Linux/UNIX systems.
+
+\item  IM-Net shall be installable to any Apache/SQL/Python/Django software stack within one hour of deploying the IM-Net software package.
 
 \end{list}
 
@@ -452,11 +465,13 @@ This Section collects all the IM-Net Hardware Requirements. All hardware require
 
 \begin{list}{H -- \arabic{qcounter}:~}{\usecounter{qcounter}}
 
-\item  IM-Net requires a compute cloud instance with scalable processing cycles.
+\item IM-Net requires a compute cloud instance with scalable processing cycles.
 
-\item  IM-Net requires a compute cloud instance with scalable file-system storage.
+\item IM-Net requires a compute cloud instance with scalable file-system storage.
 
-\item  IM-Net requires a compute cloud instance with scalable memory capacity.
+\item IM-Net requires a compute cloud instance with scalable memory capacity.
+
+\item IM-Net requires a compute cloud instance with redundant file-system storage.
 
 \end{list}
 
