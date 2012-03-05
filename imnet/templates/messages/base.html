@@ -5,7 +5,9 @@
         {{ block.super }}
 
 <script type="text/javascript">
-    $("#nav_messages").addClass("selected");
+    $(document).ready(function (){
+        $("#nav_messages").addClass("selected");
+    });
 </script>
 {% endblock head %}
 
@@ -13,8 +15,8 @@
 {% block content %}  
 {% endblock %}
 {% block contentTabs %}
-<li><a href="{% url messages_inbox %} ">&raquo;&nbsp;{% trans "Inbox" %}</a></li>
+<li id="tab_inbox"><a href="{% url messages_inbox %} ">&raquo;&nbsp;{% trans "Inbox" %}</a></li>
 <li><a href="{% url messages_outbox %} ">&raquo;&nbsp;{% trans "Sent Messages" %}</a></li>
-<li><a href="{% url messages_compose %} ">&raquo;&nbsp;{% trans "New Message" %}</a></li>
+<li id="tab_newmessage"><a href="{% url messages_compose %} ">&raquo;&nbsp;{% trans "New Message" %}</a></li>
 <li><a href="{% url messages_trash %} ">&raquo;&nbsp;{% trans "Trash" %}</a></li>
 {% endblock contentTabs %}
