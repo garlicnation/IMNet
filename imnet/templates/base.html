@@ -1,11 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    {% block head %}
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>IM-Net</title>
     <link href="/static/css/main.css" rel="stylesheet" type="text/css" />
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Cabin+Condensed:500' rel='stylesheet' type='text/css' />
+    {% endblock head %}
 </head>
 
 <body>
@@ -18,7 +20,7 @@
         {% endif %}
 
     </div>
-    <div id="header"><img src="/static/images/logo_new.png" title="IM-Net Logo" alt="IM-Net Logo" /></div>
+    <div id="header"><a href="/"><img src="/static/images/logo_new.png" title="IM-Net Logo" alt="IM-Net Logo" /></a></div>
     <div id="nav">
         {% block nav %}
         <ul>
