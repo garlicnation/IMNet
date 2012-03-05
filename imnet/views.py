@@ -30,9 +30,7 @@ def user_lookup(request, username):
     # Default return list
     results = []
     if username is not None:
-        # Ignore queries shorter than length 3
-        if len(username) > 1:
-            model_results = User.objects.filter(username__icontains=username)[:10]
-            results = [ x.username for x in model_results ]
+        model_results = User.objects.filter(username__icontains=username)[:10]
+        results = [ x.username for x in model_results ]
     json = simplejson.dumps(results)
     return HttpResponse(json, mimetype='application/json')
