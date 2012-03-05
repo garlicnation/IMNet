@@ -6,6 +6,6 @@ the following contents:{% endblocktrans %}
 {{ message.body|safe }}
 
 --
-{% blocktrans %}Sent from {{ site_url }}{% endblocktrans %}
-{% trans "Inbox" %}: {{ site_url }}{% url messages_inbox %}
-{% trans "Reply" %}: {{ site_url }}{% url messages_reply message.pk %}     
+{% blocktrans %}Sent from www.cs437.com{% endblocktrans %}
+{% trans "Inbox" %}: www.cs437.com/{% url messages_inbox %}
+{% trans "Reply" %}: www.cs437.com/{% url messages_reply message.pk %}
