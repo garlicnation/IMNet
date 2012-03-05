@@ -1,5 +1,14 @@
 {% extends "base.html" %}
-{% load i18n %}  
+{% load i18n %}
+
+{% block head %}
+        {{ block.super }}
+
+<script type="text/javascript">
+    $("#nav_messages").addClass("selected");
+</script>
+{% endblock head %}
+
 {% block bodyclass %}about{% endblock %}
 {% block content %}  
 {% endblock %}

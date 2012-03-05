@@ -8,6 +8,9 @@
     <link href="/static/css/styles.css" rel="stylesheet" type="text/css" />
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Cabin+Condensed:500' rel='stylesheet' type='text/css' />
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
     {% endblock head %}
 </head>
 
@@ -35,7 +38,7 @@
     <div id="nav">
         {% block nav %}
         <ul id="navList">
-            <li><a href="/messages" title="Inbox">Messages</a></li>
+            <li id="nav_messages"><a href="/messages" title="Inbox">Messages</a></li>
                 {% block sidebar %}
                 {% endblock %}
             <li><a href="/artists" title="Artist Home">Artist</a></li>
