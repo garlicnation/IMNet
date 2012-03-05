@@ -286,7 +286,7 @@ Requirement No. & Requirement Description \\
 \textbf{3.2-\rnumber} & IM-Net messaging interface shall include a sent messages folders that contains all messages that the user has sent to other users.  \\ 
 \hline 
 \textbf{3.2-\rnumber} & IM-Net messaging interface shall include a deleted messages folder that contains all messages that have been recently deleted by a user. \\ 
-& \textbf{Rationale:} To allow the user to access a message that may have been invertenly deleted. \\
+& \textbf{Rationale:} To allow the user to access a message that may have been inadvertently deleted. \\
 \hline 
 \textbf{3.2-\rnumber} & IM-Net messaging interface shall allow all messages to have a subject line. \\ 
 \hline 
@@ -318,26 +318,28 @@ Requirement No. & Requirement Description \\
 \hline 
 \textbf{3.3-\rnumber} & IM-Net shall store all fans based upon IM-Net users for each Music-Entity. \\ 
 \hline 
-\textbf{3.3-\rnumber} & IM-Net shall store a musical genre for each Music-Entity \\ 
-\hline 
 \textbf{3.3-\rnumber} & IM-Net shall store a HTTP-based URL to a Music-Entity's owner preferred web-site for each Music-Entity. \\ 
 \hline
 \textbf{3.3-\rnumber} & IM-Net shall store a image file for each Music-Entity. \\ 
 \hline
-& \textbf{Music-Entity Sub-classes:} \\
+& \textbf{Artists:} \\
 \hline
-\textbf{3.3-\rnumber} & IM-Net shall store each Artist Music-Entity that belongs to a Label Music-Entity. \\ 
+\textbf{3.3-\rnumber} & IM-Net shall store a musical genre for each Artist. \\ 
 \hline 
+\textbf{3.3-\rnumber} & IM-Net shall store track all collaborating Artist(s) for each music track. \\ 
+\hline
+\textbf{3.3-\rnumber} & IM-Net shall store track all collaborating Artist(s) for each music album. \\ 
+\hline
+& \textbf{Labels:} \\
+\hline
+\textbf{3.3-\rnumber} & IM-Net shall store each Artist that has a belongs-to relationship with a Label. \\ 
+\hline 
+& \textbf{Venue:} \\
+\hline
 \textbf{3.3-\rnumber} & IM-Net shall store a location for each Venue Music-Entity. \\ 
 \hline 
 \textbf{3.3-\rnumber} & IM-Net shall store date-specific events for each Venue/Artist(s) Music-Entity relationship. \\ 
 \hline
-\textbf{3.3-\rnumber} & IM-Net shall  \\ 
-\hline 
-\textbf{3.3-\rnumber} & Requirement \\ 
-\hline 
-\textbf{3.3-\rnumber} & Requirement \\ 
-\hline 
 
 \end{tabular} 
 \end{center}
@@ -350,8 +352,30 @@ Requirement No. & Requirement Description \\
 \hline 
 Requirement No. & Requirement Description \\ 
 \hline
+\textbf{3.4-\rnumber} & IM-Net shall designate the highest level account setting as 'Administrator'. \\ 
+\hline
+\textbf{3.4-\rnumber} & IM-Net shall assign super-user privileges to all administrator designated accounts. \\ 
+\hline 
+\textbf{3.4-\rnumber} & IM-Net shall only allow existing administrator accounts to designate other accounts as administrator accounts. \\ 
+\hline 
+\textbf{3.4-\rnumber} & IM-Net shall only allow accounts to be designated as administrator through the back-end shell interface. \\ 
+\hline 
+\textbf{3.4-\rnumber} & IM-Net shall require all administrator account passwords to be of character length greater than or equal to 10.  \\ 
+\hline 
+\textbf{3.4-\rnumber} & IM-Net shall require all administrator account passwords to contain both upper-case and lower-case alphabetic characters. \\
+\textbf{3.4-\rnumber} & IM-Net shall require all administrator account passwords to contain at least two digits. \\ 
+\hline 
+\textbf{3.4-\rnumber} & IM-Net shall require all administrator account password to contain at least one non-alphanumeric character. \\ 
+\hline 
 \textbf{3.4-\rnumber} & Requirement \\ 
 \hline 
+\textbf{3.4-\rnumber} & Requirement \\ 
+\hline 
+\textbf{3.4-\rnumber} & Requirement \\ 
+\hline 
+\textbf{3.4-\rnumber} & Requirement \\ 
+\hline 
+
 \end{tabular} 
 \end{center}
 
@@ -397,9 +421,9 @@ Requirement No. & Requirement Description \\
 \hline 
 \textbf{3.5-\rnumber} & IM-Net shall re-enable media uploads when disabled if anti-virus updates are completed. \\ 
 \hline
-\textbf{3.5-\rnumber} & IM-Net shall immediately quarantine and delete any media file uploads indentified by the anti-virus as compromised by malicious code. \\ 
+\textbf{3.5-\rnumber} & IM-Net shall immediately quarantine and delete any media file uploads by the anti-virus as compromised by malicious code. \\ 
 \hline
-\textbf{3.5-\rnumber} & IM-Net shall notify the user if any media file uploads are indentified by the anti-virus as compromised by malicious code. \\ 
+\textbf{3.5-\rnumber} & IM-Net shall notify the user if any media file uploads are identified by the anti-virus as compromised by malicious code. \\ 
 \hline
 \textbf{3.5-\rnumber} & Requirement \\ 
 \hline
@@ -418,8 +442,6 @@ This Section collects all the IM-Net Non-Functional Requirements. All non-functi
 
 \item  IM-Net shall require minimal training for users who have experience with common web browsers and web-based applications.
 
-\item  IM-Net shall not disclose any personal information about any artists, label, venue or fan to unauthorized users.
-
 \item  IM-Net shall be deployable to any Apache/SQL/Python/Django software stack within 5 hours of unpacking the IM-Net software package.
 
 \end{list}
@@ -430,9 +452,11 @@ This Section collects all the IM-Net Hardware Requirements. All hardware require
 
 \begin{list}{H -- \arabic{qcounter}:~}{\usecounter{qcounter}}
 
-\item  IM-Net requires a redundant and scalable compute cloud instance.
+\item  IM-Net requires a compute cloud instance with scalable processing cycles.
 
-\item  The IM-Net computer cloud instance requires 99.99\% uptime through a proper environmentally controlled and power redundant data center.
+\item  IM-Net requires a compute cloud instance with scalable file-system storage.
+
+\item  IM-Net requires a compute cloud instance with scalable memory capacity.
 
 \end{list}
 
@@ -442,9 +466,9 @@ This Section collects all the IM-Net Hardware Requirements. All hardware require
 
 In this section, the IM-Net described in Section 2 with requirements listed in Section 3 will be designed in detail including several higher level DFDs. Each major module detailed design is included in correspondence with the design sections defined in Section 2 and responding to the requirements listed in its correlated sub-section in chapter 3.
 
-The detailed design of each of the four modules discussed in section 2 with requirements presented in section 3 is presented in Figures 4-1, 4-2, 4-3, and 4-4. As done in previous cases, Figure 4-1 corresponds to the detailed design of Module 2.1, and so on.
+The detailed design of each of the four modules discussed in section 2 with requirements presented in section 3 is presented in Figures 4-1, 4-2, 4-3, 4-4, 4-5. As done in previous cases, Figure 4-1 corresponds to the detailed design of Module 2.1, and so on.
 
-Figure 4-1 shows the four sub-modules that comprise module 2.1. Next, Figure 4-2 shows the three sub-modules that comprise module 2.2. Then, Figure 4-3 shows the four sub-modules that comprise module 2.3. Lastly, Figure 4-4 depicts the three sub-modules that comprise module 2.4.
+Figure 4-1 shows the sub-modules that comprise module 2.1. Next, Figure 4-2 shows the  sub-modules that comprise module 2.2. Figure 4-3 shows the sub-modules that comprise module 2.3. Figure 4-4 depicts the sub-modules that comprise module 2.4. Lastly, Figure 4-5 depicts the sub-modules that comprise module 2.5.
 
 \begin{figure}[h!]
 \centering
@@ -466,13 +490,30 @@ Figure 4-1 shows the four sub-modules that comprise module 2.1. Next, Figure 4-2
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.6]{DFD_level_2_3.pdf}
+\includegraphics[scale=0.7]{DFD_level_2_3.pdf}
 \caption{DFD Level 2.3}
 \label{fig:DFD_level_2.3}
 \end{figure}
 
 \eject
 
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{DFD_level_2_4.pdf}
+\caption{DFD Level 2.4}
+\label{fig:DFD_level_2.4}
+\end{figure}
+
+\eject
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{DFD_level_2_5.pdf}
+\caption{DFD Level 2.5}
+\label{fig:DFD_level_2.5}
+\end{figure}
+
+\eject
  
 \textcolor{section}{\Section{IM-Net Elements of Implementation}}
 
@@ -524,7 +565,7 @@ The IM-Net Functional and Performance Requirements Validation Matrix is given be
  
 \textcolor{section}{\Section{Data Dictionary}}
 
-\underline{Daemon}: A computer program that runs as a background process rather than being under control of a interactive user, typicaly started at boot time and serves the function of responding to network requests.
+\underline{Daemon}: A computer program that runs as a background process rather than being under control of a interactive user, typically started at boot time and serves the function of responding to network requests.
 
 \underline{Django}: An open source web application framework, written in Python, which follows the Model-View-Controller architectural pattern.
 
