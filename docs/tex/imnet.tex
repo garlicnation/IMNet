@@ -205,21 +205,25 @@ Requirement No. & Requirement Description \\
 \hline 
 \textbf{3.1-\rnumber} & IM-Net CSS templates shall conform with the CSS level 3 standard set by the W3C. \\ 
 \hline 
-\textbf{3.1-\rnumber} & IM-Net shall store all template files on the server's local filesystem. \\ 
+\textbf{3.1-\rnumber} & IM-Net shall store all template files on the server's local filesystem. \\
+\hline
+\textbf{3.1-\rnumber} & IM-Net shall have a base template. \\ 
+\hline 
+\textbf{3.1-\rnumber} & IM-Net shall have a base artist template. \\ 
+\hline 
+\textbf{3.1-\rnumber} & IM-Net shall have a base label template. \\ 
+\hline 
+\textbf{3.1-\rnumber} & IM-Net shall have a base venue template. \\ 
+\hline 
+\textbf{3.1-\rnumber} & IM-Net shall have a base fan template. \\ 
+\hline 
+\textbf{3.1-\rnumber} & IM-Net shall have a base messaging template. \\ 
 \hline 
 & \textbf{Interpreter:} \\
 \hline
 \textbf{3.1-\rnumber} & IM-Net shall generate dynamic HTML/CSS code using data from the Content Management Controller and the pre-defined template files. \\ 
 \hline 
-\textbf{3.1-\rnumber} & IM-Net shall . \\ 
-\hline 
-\textbf{3.1-\rnumber} & IM-Net shall. \\ 
-\hline 
-\textbf{3.1-\rnumber} & IM-Net shall. \\ 
-\hline 
-\textbf{3.1-\rnumber} & IM-Net shall. \\ 
-\hline 
-\textbf{3.1-\rnumber} & IM-Net shall. \\ 
+\textbf{3.1-\rnumber} & IM-Net shall route all dynamically generated HTML/CSS to the Web-Server daemon. \\ 
 \hline 
 
 \end{tabular} 
@@ -235,15 +239,10 @@ Requirement No. & Requirement Description \\
 \hline
 & \textbf{Controller:} \\
 \hline
-\textbf{3.2-\rnumber} & IM-Net shall route all server requests . \\ 
+\textbf{3.2-\rnumber} & IM-Net shall query the database for all data requests. \\ 
 \hline 
-\textbf{3.2-\rnumber} & IM-Net shall route  \\ 
-\hline 
-\textbf{3.2-\rnumber} & IM-Net shall  \\ 
-\hline 
-\textbf{3.2-\rnumber} & IM-Net shall  \\ 
-\hline 
-\textbf{3.2-\rnumber} & IM-Net shall  \\ 
+\textbf{3.2-\rnumber} & IM-Net shall send all request data to the Interpreter function in the View module. \\
+& \textbf{Rationale:} IM-Net generates all dynamic content by parsing the template files and inserting the appropriate data using the Interpreter function. \\
 \hline 
 & \textbf{Registration:} \\
 \hline
@@ -264,19 +263,19 @@ Requirement No. & Requirement Description \\
 \hline 
 \textbf{3.2-\rnumber} & IM-Net shall encrypt all user e-mail addresses. \\ 
 \hline 
-\textbf{3.2-\rnumber} & IM-Net shall  \\ 
-\hline 
 & \textbf{User Authentication:} \\
 \hline
-\textbf{3.2-\rnumber} & IM-Net shall authenticate all users before allowing users to change access. \\ 
+\textbf{3.2-\rnumber} & IM-Net shall verify all authentication information against the proper username/password combination stored in the database. \\ 
 \hline 
-\textbf{3.2-\rnumber} & IM-Net shall verify all authentication information against the user registration data stored in the database. \\ 
+\textbf{3.2-\rnumber} & IM-Net shall authenticate users before allowing access to the messaging interface. \\ 
 \hline 
-\textbf{3.2-\rnumber} & IM-Net shall  \\ 
+\textbf{3.2-\rnumber} & IM-Net shall authenticate users before allowing access to the fan interface. \\ 
 \hline 
-\textbf{3.2-\rnumber} & IM-Net shall  \\ 
+\textbf{3.2-\rnumber} & IM-Net shall authenticate user before allowing users to define favorite artists. \\ 
 \hline 
-\textbf{3.2-\rnumber} & IM-Net shall  \\ 
+\textbf{3.2-\rnumber} & IM-Net shall authenticate user before allowing users to define favorite labels. \\ 
+\hline 
+\textbf{3.2-\rnumber} & IM-Net shall authenticate user before allowing users to define favorite venues. \\ 
 \hline 
 & \textbf{Messaging:} \\
 \hline
@@ -286,15 +285,12 @@ Requirement No. & Requirement Description \\
 \hline 
 \textbf{3.2-\rnumber} & IM-Net messaging interface shall include a sent messages folders that contains all messages that the user has sent to other users.  \\ 
 \hline 
-\textbf{3.2-\rnumber} & IM-Net shall  \\ 
+\textbf{3.2-\rnumber} & IM-Net messaging interface shall include a deleted messages folder that contains all messages that have been recently deleted by a user. \\ 
+& \textbf{Rationale:} To allow the user to access a message that may have been invertenly deleted. \\
 \hline 
 \textbf{3.2-\rnumber} & IM-Net messaging interface shall allow all messages to have a subject line. \\ 
 \hline 
-\textbf{3.2-\rnumber} & IM-Net shall  \\ 
-\hline 
-\textbf{3.2-\rnumber} & IM-Net shall  \\ 
-\hline 
-\textbf{3.2-\rnumber} & IM-Net shall  \\ 
+\textbf{3.2-\rnumber} & IM-Net messaging interface shall allow all messages to have a message body.  \\ 
 \hline 
 
 
@@ -379,6 +375,16 @@ Requirement No. & Requirement Description \\
 \hline
 \textbf{3.5-\rnumber} & IM-Net shall ensure that no duplicate media files exist in the Media Store. \\ 
 \hline
+\textbf{3.5-\rnumber} & IM-Net shall ensure that all uploaded media files are limited to the MPEG-1 or MPEG-2 Audio Layer III standard (MP3). \\ 
+\hline
+\textbf{3.5-\rnumber} & IM-Net shall ensure that all uploaded media files are tagged with title metadata. \\ 
+\hline
+\textbf{3.5-\rnumber} & IM-Net shall ensure that all uploaded media files are tagged with artists metadata. \\ 
+\hline
+\textbf{3.5-\rnumber} & IM-Net shall ensure that all uploaded media file artist tags match the user's Music-Entity name. \\ 
+\hline
+\textbf{3.5-\rnumber} &  \\ 
+\hline
 \textbf{3.5-\rnumber} &  \\ 
 \hline
 & \textbf{Security:} \\
@@ -426,13 +432,7 @@ This Section collects all the IM-Net Hardware Requirements. All hardware require
 
 \item  IM-Net requires a redundant and scalable compute cloud instance.
 
-\item  The IM-Net computer cloud instance requires 99.99\% uptime through a proper environmentally controlled and power redundant data center. \#2
-
-\item  IM-Net Hardware Requirement \#3
-
-\item  IM-Net Hardware Requirement \#4
-
-\item  IM-Net Hardware Requirement \#5
+\item  The IM-Net computer cloud instance requires 99.99\% uptime through a proper environmentally controlled and power redundant data center.
 
 \end{list}
 
@@ -513,6 +513,8 @@ The IM-Net Functional and Performance Requirements Validation Matrix is given be
 
 \textbf{MVC} Model-View-Controller
 
+\textbf{SQL} Structured Query Language
+
 \textbf{W3C} World Wide Web Consortium
 
 \textbf{XHTML} eXtensible HyperText Markup Language
@@ -521,6 +523,8 @@ The IM-Net Functional and Performance Requirements Validation Matrix is given be
 \eject 
  
 \textcolor{section}{\Section{Data Dictionary}}
+
+\underline{Daemon}: A computer program that runs as a background process rather than being under control of a interactive user, typicaly started at boot time and serves the function of responding to network requests.
 
 \underline{Django}: An open source web application framework, written in Python, which follows the Model-View-Controller architectural pattern.
 
