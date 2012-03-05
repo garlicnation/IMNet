@@ -5,9 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, Http404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+import simplejson
 
-
-@login_required
 def index(request):
     Artists = Artist.objects.all()[:5]
     print request.user.is_authenticated()
@@ -25,3 +24,15 @@ def artists(request):
     Artists = Artist.objects.all()[:]
     print Artists
     return render_to_response('imnet/artists.html', {'artists': Artists},context_instance=RequestContext(request))
+
+
+def user_lookup(request, username):
+    # Default return list
+    results = []
+    if username is not None:
+        # Ignore queries shorter than length 3
+        if len(username) > 1:
+            model_results = User.objects.filter(username__icontains=username)[:10]
+            results = [ x.username for x in model_results ]
+    json = simplejson.dumps(results)
+    return HttpResponse(json, mimetype='application/json')
