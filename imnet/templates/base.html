@@ -3,7 +3,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>IM-Net</title>
-    <link href="/static/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/static/css/position.css" rel="stylesheet" type="text/css" />
+    <link href="/static/css/styles.css" rel="stylesheet" type="text/css" />
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Cabin+Condensed:500' rel='stylesheet' type='text/css' />
 </head>
@@ -19,9 +20,19 @@
 
     </div>
     <div id="header"><img src="/static/images/logo_new.png" title="IM-Net Logo" alt="IM-Net Logo" /></div>
+    <div id="contentTabs">
+        <ul id="tabs">
+            {% block contentTabs %}
+            <li class="selected"><a href="#t1">Tab 1</a></li>
+            <li><a href="#t2">Tab 2</a></li>
+            <li><a href="#t3">Tab 3</a></li>
+            <li><a href="#t4">Tab 4</a></li>
+            {% endblock contentTabs %}
+        </ul>
+    </div>
     <div id="nav">
         {% block nav %}
-        <ul>
+        <ul id="navList">
             <li><a href="/messages" title="Inbox">Messages</a></li>
                 {% block sidebar %}
                 {% endblock %}
@@ -32,18 +43,8 @@
         </ul>
         {% endblock nav %}
     </div>
-    <div id="contentPane">
+    <div id="content">
         {% block contentPane %}
-        <div id="contentTabs">
-            <ul id="tabs">
-                {% block contentTabs %}
-                <li><a href="#t1">Tab 1</a></li>
-                <li><a href="#t2">Tab 2</a></li>
-                <li><a href="#t3">Tab 3</a></li>
-                <li><a href="#t4">Tab 4</a></li>
-                {% endblock contentTabs %}
-            </ul>
-        </div>
          {% block content %}
             <p>All page content here</p>
         {% endblock content %}
