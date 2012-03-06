@@ -1,15 +1,18 @@
 \documentclass[letterpaper,12pt]{article}
 
-\usepackage[cm]{fullpage}					% To maximize spacing on letter paper
-\usepackage{color}							% For pretty colors
-\usepackage[pdftex]{graphicx}				% To import images
-\usepackage{fancyhdr}						% Fancy Headers and Footers
-\usepackage{parskip}						% Vertical spacing inbetween paragraphs
+\usepackage[cm]{fullpage}						% To maximize spacing on letter paper
+\usepackage{color}								% For pretty colors
+\usepackage[pdftex]{graphicx}					% To import images
+\usepackage{fancyhdr}							% Fancy Headers and Footers
+\usepackage{parskip}							% Vertical spacing inbetween paragraphs
 
-\newcounter{qcounter}						% For custom lists
+\newcounter{qcounter}							% For custom lists
 
-\newcounter{rcounter}						% For counting in tabular environments
+\newcounter{rcounter}							% For counting in tabular environments
 \newcommand\rnumber{\stepcounter{rcounter}\arabic{rcounter}}
+
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}	% Custom Horizontal Rule for the title page
 
 % We are customizing the \Section command here so that all figures in each section
 % follow the 'Figure s-n' convention, where 's' is the section number and 'n' is the
@@ -17,6 +20,12 @@
 \renewcommand{\thefigure}{\thesection-\arabic{figure}}
 \newcommand{\Section}[1]{\section{#1} \setcounter{figure}{0}}
 
+% Renew the Verabatim command so that the text size is smaller
+\makeatletter
+\def\verbatim{\footnotesize\@verbatim \frenchspacing\@vobeyspaces \@xverbatim}
+\makeatother
+
+\definecolor{title}{RGB}{54,95,145}
 \definecolor{section}{RGB}{54,95,145}
 \definecolor{subsection}{RGB}{79,129,189}
 \definecolor{subsubsection}{RGB}{79,129,189}
@@ -33,6 +42,61 @@
 \lfoot{\textcolor{footer}{FRD/SDD/SID/TPD for IM-Net, by Aggrawal, Bogle, Kelsey and Ortega. Winter 2012.}}
 
 \begin{document}
+
+\input{./title.tex}
+
+%% Signature Page
+\begin{center}
+{\Large \textbf{Independent Music Network}}\\
+(IM-Net)\\
+\end{center}
+
+\vspace{3cm}
+Prepared By:\\
+Mayank Aggarwal\\
+Ryan Bogle\\
+Jason Kelsey\\
+Alfonso Ortega
+
+\vspace{2cm}
+Approved By:\\
+\vspace{2cm}
+\makebox[2in]{\hrulefill}
+\hspace{0.5cm}
+\makebox[2in]{\hrulefill}\\
+Jose Macias
+\hspace{1.36in}
+Date
+
+\eject
+
+%% Document Change Log
+\begin{center}
+\underline{\textbf{Document Change Log}}
+\end{center}
+\begin{tabular}{|l|l|p{5in}|}
+\hline 
+\textbf{Update} & \textbf{Date Released} & \textbf{Changes} \\ 
+\hline 
+Draft & March 5th, 2012 & Delivery of the Draft FRD/SDD/SID/TPD Document \\ 
+\hline 
+\end{tabular} 
+
+\eject
+
+%% List of TBD Items
+%% NOTE: COMMENTED OUT BECAUSE THERE ARE CURRENTLY NO TBD ITEMS.
+%\begin{center}
+%\underline{\textbf{List of TBD Items}}
+%\end{center}
+%\begin{tabular}{|l|l|l|p{5in}|}
+%\hline 
+%\textbf{Page} & \textbf{Item} & %\textbf{Description} & Status \\ 
+%\hline 
+%N/A & N/A & N/A & N/A \\ 
+%\hline 
+%\end{tabular} 
+%\eject
 
 \tableofcontents
 \listoffigures
@@ -106,8 +170,6 @@ IM-Net is a software application which provides major functions such as the ones
 
 IM-Net is implemented primary using the Django content management system, a web-based framework that closely follows the Model-View-Controller architectural pattern. Data models are framed using Python classes and are stored into a SQL relational database. Views are implemented using Django's Template language, which are used by Django to generate dynamic HTML output. Controllers are Python scripts that describe to the view which particular data will be shown. 
 
-TODO: WRITE MORE HERE
-
 \textcolor{subsection}{\subsection{Documentation Development Process}}
 
 The IM-Net detailed functional description is documented in section 2.0. Basically, Section 2 is a succinct software description document. The overall detailed functional description is based on higher level DFDs (above level 1). All major functional units are described in detail in this part of the document.
@@ -119,7 +181,6 @@ Section 4 is the IM-Net detailed Design Description Document (SDD). This part of
 Section 5 includes elements of a partial implementation of the IM-Net. This section includes the various constraints that effectively limit the implementation as well as the sub-units that will be coded. The implementation goals are defined and the code and pseudo code are included as an attachment to this section.  
 
 Section 6 is the last major section in this document and includes the overall Test Plan (TP) of the IM-Net. The test plan details the various techniques used to test the requirements and it also includes a Validation Matrix where each requirement specified in section 3 is listed with its corresponding validation method. In addition, TP specifies the mandated peer reviews needed to validate the stakeholders part of the requirements.
-
  
 \textcolor{subsection}{\subsection{References}}
 
@@ -159,19 +220,19 @@ The IM-Net major functional subunits are shown in the DFD Level 1 depicted below
 The description of the function of the IM-Net major functional units shown in Figure \ref{fig:DFD_level_1} follows.
 
 \paragraph{View - Module 2.1}
-The View module is responsible for communicating with the user's browser and generating the client-side appearance and functionality of IM-Net.
+The View module is responsible for communicating with the user's browser and generating the client-side appearance and functionality of IM-Net. The Web Server Daemon is responsible for routing all HTTP requests and responses to and from the user's browser. The Interpreter function receives all dynamic data from the Controller function in the Content Management module and generates all the dynamic browser content using the predefined Django templates. All template files are static files that are stored locally in the file-system.
 
 \paragraph{Content Management - Module 2.2}
 The Content Management module is the interface hub between all other IM-Net modules and the database. All IM-Net data are framed within the Content Management module using the pre-defined Python classes, then stored in the database. The Controller function receives all requests from the View module, gets the appropriate data from the database and other modules, and send the response back to the View module. The Registration function handles all registration requests by creating new user information and permissions in the database, then e-mails the new user their login information. The User-Authentication function handles login requests, querying the database for the proper credentials, and if successful, returns the user's proper permissions. The Messaging function handles all IM-Net internal messaging , i.e., tracking intercommunication in between all IM-Nets users through message threads.
 
 \paragraph{Music-Entity - Module 2.3}
-The Music-Entity module provides the Music-Entity abstract superclass that all artists, labels and venues classes are framed upon.
+The Music-Entity module provides the Music-Entity abstract superclass that all artists, labels and venues classes are framed upon. The Music-Entity superclass stores a name, unique short-name, description and other metadata common to all Music-Entities. The Artist subclass stores musical genres and a collaborating artists relationship for all music tracks and albums. The Label subclass stores each Artist/Label relationship. The Venue subclass stores physical location information and data-specific events.
 
 \paragraph{Administration - Module 2.4}
-The Administration module provides the super-user interface for all IM-Net administrators.
+The Administration module provides the super-user interface for all IM-Net administrators. The Administration Controller function is responsible for securely editing and deleting any IM-Net Music-Entity data. The Administration Interface is the main interface for IM-Net administrators to perform routine administration tasks such as editing or deleting any of the Music-Entity Artist, Venue or Label data. The Shell Interface is the back-end interface for IM-Net administrators to perform more in-depth maintenance tasks such as creating additional administrator accounts and account password changes. 
 
 \paragraph{Media - Module 2.5}
-The Media module handles the safe storage of all IM-Net media files in the IM-Net Media Store.
+The Media module handles the safe and secure storage of all IM-Net media files in the IM-Net Media Store. The Media Store function stores and manages all auditory media files that are uploaded by IM-Net Artists, Labels or Venues. The Security function ensures that no malicious code is uploaded to IM-Net by interfacing with commercial anti-virus to scan each individual file that is uploaded by IM-Net users.
 
 
 \eject
@@ -193,7 +254,7 @@ Requirement No. & Requirement Description \\
 \hline
 & \textbf{Web-Server Daemon:} \\
 \hline
-\textbf{3.1-\rnumber} & IM-Net shall run a web-server daemon to interface with the user's browser. \\ 
+\textbf{3.1-\rnumber} & IM-Net web-server daemon shall conform to the HTTP protocol specification. \\ 
 \hline 
 \textbf{3.1-\rnumber} & IM-Net web-server daemon shall route all requests to the Content Management controller function. \\ 
 \hline 
@@ -205,19 +266,19 @@ Requirement No. & Requirement Description \\
 \hline 
 \textbf{3.1-\rnumber} & IM-Net CSS templates shall conform with the CSS level 3 standard set by the W3C. \\ 
 \hline 
-\textbf{3.1-\rnumber} & IM-Net shall store all template files on the server's local filesystem. \\
+\textbf{3.1-\rnumber} & IM-Net shall store all template files on the server's local file-system. \\
 \hline
 \textbf{3.1-\rnumber} & IM-Net shall have a base template. \\ 
 \hline 
-\textbf{3.1-\rnumber} & IM-Net shall have a base artist template. \\ 
+\textbf{3.1-\rnumber} & IM-Net shall have a artist template. \\ 
 \hline 
-\textbf{3.1-\rnumber} & IM-Net shall have a base label template. \\ 
+\textbf{3.1-\rnumber} & IM-Net shall have a label template. \\ 
 \hline 
-\textbf{3.1-\rnumber} & IM-Net shall have a base venue template. \\ 
+\textbf{3.1-\rnumber} & IM-Net shall have a venue template. \\ 
 \hline 
-\textbf{3.1-\rnumber} & IM-Net shall have a base fan template. \\ 
+\textbf{3.1-\rnumber} & IM-Net shall have a fan template. \\ 
 \hline 
-\textbf{3.1-\rnumber} & IM-Net shall have a base messaging template. \\ 
+\textbf{3.1-\rnumber} & IM-Net shall have a messaging template. \\ 
 \hline 
 & \textbf{Interpreter:} \\
 \hline
@@ -239,8 +300,6 @@ Requirement No. & Requirement Description \\
 \hline
 & \textbf{Controller:} \\
 \hline
-\textbf{3.2-\rnumber} & IM-Net shall query the database for all data requests. \\ 
-\hline 
 \textbf{3.2-\rnumber} & IM-Net shall send all request data to the Interpreter function in the View module. \\
 & \textbf{Rationale:} IM-Net generates all dynamic content by parsing the template files and inserting the appropriate data using the Interpreter function. \\
 \hline 
@@ -271,11 +330,7 @@ Requirement No. & Requirement Description \\
 \hline 
 \textbf{3.2-\rnumber} & IM-Net shall authenticate users before allowing access to the fan interface. \\ 
 \hline 
-\textbf{3.2-\rnumber} & IM-Net shall authenticate user before allowing users to define favorite artists. \\ 
-\hline 
-\textbf{3.2-\rnumber} & IM-Net shall authenticate user before allowing users to define favorite labels. \\ 
-\hline 
-\textbf{3.2-\rnumber} & IM-Net shall authenticate user before allowing users to define favorite venues. \\ 
+\textbf{3.2-\rnumber} & IM-Net shall authenticate user before allowing users to define favorite Artists, Label or Venues. \\ 
 \hline 
 & \textbf{Messaging:} \\
 \hline
@@ -360,26 +415,15 @@ Requirement No. & Requirement Description \\
 \hline 
 & \textbf{Admin Interface:} \\
 \hline
-\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated accounts to edit any Music-Entity data. \\ 
+\textbf{3.4-\rnumber} & IM-Net shall have a web-based administration interface to for maintenance of all Music-Entity data. \\ 
 \hline 
-\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated accounts to edit any Artists data. \\ 
+\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated accounts to edit any Music-Entity Artists, Label or Venue data. \\ 
 \hline 
-\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated accounts to edit any Label data. \\ 
+\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated accounts to delete any Music-Entity Artist, Label or Venue data. \\ 
 \hline 
-\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated account to edit any Venue data. \\ 
-\hline
-\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated accounts to delete any Music-Entity data. \\ 
-\hline 
-\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated accounts to delete any Artists data. \\ 
-\hline 
-\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated accounts to delete any Label data. \\ 
-\hline 
-\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated account to delete any Venue data. \\ 
-\hline
-
-\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated account to delete any other user account. \\ 
-\hline
 & \textbf{Shell Interface:} \\
+\hline
+\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated account to delete any other user account. \\ 
 \hline
 \textbf{3.4-\rnumber} & IM-Net shall only allow shell interface access to administrator designated accounts. \\ 
 \hline 
@@ -410,7 +454,7 @@ Requirement No. & Requirement Description \\
 \hline
 & \textbf{Media Store:} \\
 \hline
-\textbf{3.5-\rnumber} & IM-Net shall store all media files into the Media Store based upon a hierarchical Artist/Album structure. \\ 
+\textbf{3.5-\rnumber} & IM-Net shall store all media files into the Media Store. \\ 
 \hline
 \textbf{3.5-\rnumber} & IM-Net Media Store shall be based upon a hierarchical Artist/Album structure. \\ 
 \hline
@@ -432,13 +476,19 @@ Requirement No. & Requirement Description \\
 \hline
 \textbf{3.5-\rnumber} & IM-Net shall check every uploaded media file for malicious code using anti-virus software. \\ 
 \hline
-\textbf{3.5-\rnumber} & IM-Net shall perform anti-virus database updates daily.\\ 
+\textbf{3.5-\rnumber} & IM-Net shall quarantine every uploaded media file until checked for malicious code using anti-virus software. \\ 
+\hline
+\textbf{3.5-\rnumber} & IM-Net shall check every uploaded media file for malicious code using anti-virus software. \\ 
+\hline
+\textbf{3.5-\rnumber} & IM-Net shall perform anti-virus definitions updates daily.\\ 
+\hline
+\textbf{3.5-\rnumber} & IM-Net shall perform a complete scan of the entire media store after the anti-virus performs the daily definitions update.\\ 
 \hline
 \textbf{3.5-\rnumber} & IM-Net shall disable media uploads if anti-virus updates cannot be completed as scheduled. \\ 
 \hline 
 \textbf{3.5-\rnumber} & IM-Net shall re-enable media uploads when disabled if anti-virus updates are completed. \\ 
 \hline
-\textbf{3.5-\rnumber} & IM-Net shall immediately quarantine and delete any media file uploads by the anti-virus as compromised by malicious code. \\ 
+\textbf{3.5-\rnumber} & IM-Net shall immediately delete any media file uploads identified by the anti-virus as compromised by malicious code. \\ 
 \hline
 \textbf{3.5-\rnumber} & IM-Net shall notify the user if any media file uploads are identified by the anti-virus as compromised by malicious code. \\ 
 \hline
@@ -534,6 +584,204 @@ Figure 4-1 shows the sub-modules that comprise module 2.1. Next, Figure 4-2 show
 
 In this section (some of) the modules designed in Section 4 with requirements listed in Section 3 will be implemented initially at least at the level of pseudo code. Where possible, actual code will be provided. Each module is implemented in correspondence with the design sections defined in section 2 and responding to the requirements listed in its correlated sub-section in chapter 3.
 
+\textcolor{subsection}{\subsection{Music-Entity Module - models.py}}
+\begin{verbatim}
+from django.db import models
+from django.contrib.auth.models import User
+
+class MusicEntity(models.Model):
+    name = models.CharField(max_length=128)
+    shortname = models.CharField(max_length=20)
+    description = models.TextField()
+    owners = models.ManyToManyField(User)
+    fans = models.ManyToManyField(User, related_name='favorites')
+    genre = models.TextField()
+    website = models.URLField()
+    main_image = models.ForeignKey('Image', blank=True, null=True)
+    def __unicode__(self):
+        return self.name
+
+class Artist(MusicEntity):
+    pass
+
+class Label(MusicEntity):
+    artists = models.ManyToManyField(Artist)
+
+class Venue(MusicEntity):
+    location = models.TextField()
+
+class Event(MusicEntity):
+    artists = models.ManyToManyField(Artist)
+    venue = models.ForeignKey(Venue)
+    date = models.DateTimeField()
+
+class Album(models.Model):
+    title = models.CharField(max_length=128)
+    label = models.ForeignKey(Label)
+    collaborators = models.ManyToManyField(Artist)
+    description = models.TextField()
+    release_date = models.DateField()
+#    cover_art = models.ImageField()
+    def __unicode__(self):
+        return self.title
+
+class Track(models.Model):
+    title = models.CharField(max_length=128)
+    number = models.IntegerField()
+    genre = models.CharField(max_length=60)
+    artists = models.ManyToManyField(Artist)
+    album = models.ForeignKey(Album)
+    length = models.IntegerField() #Length in seconds
+    def __unicode__(self):
+        return self.title
+
+class Image(models.Model):
+    name = models.CharField(max_length=128)
+    owner = models.ForeignKey(MusicEntity)
+    image = models.ImageField(upload_to='images/')
+    def __unicode__(self):
+        return self.name
+
+class Message(models.Model):
+    subject = models.CharField(max_length=128)
+    body = models.TextField()
+    sender = models.ForeignKey(User, related_name='sent')
+    recipients = models.ManyToManyField(User, related_name='received')
+
+class Post(models.Model):
+    author = models.ForeignKey(MusicEntity)
+    title = models.CharField(max_length=128)
+    body = models.TextField()
+\end{verbatim}
+
+\textcolor{subsection}{\subsection{IM-Net Base Template - base.html}}
+\begin{verbatim}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    {% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>IM-Net</title>
+    <link href="/static/css/position.css" rel="stylesheet" type="text/css" />
+    <link href="/static/css/styles.css" rel="stylesheet" type="text/css" />
+    <link href="/static/css/sticky.min.css" rel="stylesheet" type="text/css" />
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Cabin+Condensed:500' rel='stylesheet' type='text/css' />
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <script src="/static/js/sticky.min.js"></script>
+
+
+    {% if messages %}
+    <script type="text/javascript">
+        $(document).ready( function() {
+        {% for message in messages %}
+        $.sticky( '{{ message }} ' );
+        {% endfor %}
+        });
+    </script>
+    {% endif %}
+
+    {% endblock head %}
+</head>
+
+<body>
+<div id="wrapper">
+    <div id="login">
+        {% if user.is_authenticated %}
+        Welcome, {{ user.username }}. <a href="/accounts/logout">Logout!</a>
+        {% else %}
+        <a href="/accounts/login">Login</a>/<a href="/accounts/register">Register</a>
+        {% endif %}
+
+    </div>
+    <div id="header">><a href="/"><img src="/static/images/logo_new.png" title="IM-Net Logo" alt="IM-Net Logo" /></a></div>
+    <div id="contentTabs">
+        <ul id="tabs">
+            {% block contentTabs %}
+            <li class="selected"><a href="#t1">Tab 1</a></li>
+            <li><a href="#t2">Tab 2</a></li>
+            <li><a href="#t3">Tab 3</a></li>
+            <li><a href="#t4">Tab 4</a></li>
+            {% endblock contentTabs %}
+        </ul>
+    </div>
+    <div id="nav">
+        {% block nav %}
+        <ul id="navList">
+            <li id="nav_messages"><a href="/messages" title="Inbox">Messages</a></li>
+                {% block sidebar %}
+                {% endblock %}
+            <li><a href="/artists" title="Artist Home">Artist</a></li>
+            <li><a href="labels" title="Label Management">Label</a></li>
+            <li><a href="venues" title="Venue Management">Venue</a></li>
+            <li><a href="fans" title="Fanships Management">Fan</a></li>
+        </ul>
+        {% endblock nav %}
+    </div>
+    <div id="content">
+        {% block contentPane %}
+         {% block content %}
+            <p>All page content here</p>
+        {% endblock content %}
+        {% endblock contentPane %}
+    </div>
+    <div id="footer">
+        <ul>
+            <li><a href="#" title="About Us">About IM-Net</a></li>
+            <li> | </li>
+            <li><a href="#" title="Site Map">Site Map</a></li>
+            <li> | </li>
+            <li><a href="#" title="Contact Us">Contact</a></li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>
+\end{verbatim}
+
+\textcolor{subsection}{\subsection{Views Interpreter - views.py}}
+\begin{verbatim}
+from django.template import Context, loader
+from imnet.models import *
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse, Http404
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+import simplejson
+
+def index(request):
+    Artists = Artist.objects.all()[:5]
+    print request.user.is_authenticated()
+    return render_to_response('imnet/index.html', {'artists': Artists},context_instance=RequestContext(request))
+
+
+def artist(request,artist_id):
+    try:
+        a = Artist.objects.get(pk=artist_id)
+    except Artist.DoesNotExist:
+        raise Http404
+    return render_to_response('imnet/artist.html', {'artist':a},context_instance=RequestContext(request))
+
+def artists(request):
+    Artists = Artist.objects.all()[:]
+    print Artists
+    return render_to_response('imnet/artists.html', {'artists': Artists},context_instance=RequestContext(request))
+
+
+def user_lookup(request, username):
+    # Default return list
+    results = []
+    if username is not None:
+        model_results = User.objects.filter(username__icontains=username)[:10]
+        results = [ x.username for x in model_results ]
+    json = simplejson.dumps(results)
+    return HttpResponse(json, mimetype='application/json')
+\end{verbatim}
+
 \eject 
 
 \textcolor{section}{\Section{IM-Net Test Plan}}
@@ -555,6 +803,238 @@ The methodologies and testing strategies identified at this point include three 
  
 \textcolor{subsection}{\subsection{Functional Requirements Validation Matrix}}
 The IM-Net Functional and Performance Requirements Validation Matrix is given below.
+
+\begin{center}
+\begin{tabular}{|l|p{4in}|p{2in}|}
+\hline 
+Requirement No. & Requirement Description  & Testing Methodology \\ 
+\hline
+& \textbf{Web-Server Daemon:} & \\
+\hline
+\textbf{3.1-\rnumber} & IM-Net web-server daemon shall conform to the HTTP protocol specification. & Basis Path Testing \\ 
+\hline 
+\textbf{3.1-\rnumber} & IM-Net web-server daemon shall route all requests to the Content Management controller function. & Basis Path Testing \\ 
+\hline 
+\textbf{3.1-\rnumber} & IM-Net web-server daemon shall route all responses to the user's browser. & Basis Path Testing \\ 
+\hline  
+& \textbf{Templates:} & \\
+\hline
+\textbf{3.1-\rnumber} & IM-Net HTML templates shall conform with the XHTML 1.0 Transitional standard set by the W3C. & Basis Path Testing \\ 
+\hline 
+\textbf{3.1-\rnumber} & IM-Net CSS templates shall conform with the CSS level 3 standard set by the W3C. & Basis Path Testing \\ 
+\hline 
+\textbf{3.1-\rnumber} & IM-Net shall store all template files on the server's local file-system. & Basis Path Testing \\
+\hline
+\textbf{3.1-\rnumber} & IM-Net shall have a base template. & Demonstration \\ 
+\hline 
+\textbf{3.1-\rnumber} & IM-Net shall have a artist template. & Demonstration \\ 
+\hline 
+\textbf{3.1-\rnumber} & IM-Net shall have a label template. & Demonstration \\ 
+\hline 
+\textbf{3.1-\rnumber} & IM-Net shall have a venue template. & Demonstration \\ 
+\hline 
+\textbf{3.1-\rnumber} & IM-Net shall have a fan template. & Demonstration \\ 
+\hline 
+\textbf{3.1-\rnumber} & IM-Net shall have a messaging template. & Demonstration \\ 
+\hline 
+& \textbf{Interpreter:} & \\
+\hline
+\textbf{3.1-\rnumber} & IM-Net shall generate dynamic HTML/CSS code using data from the Content Management Controller and the pre-defined template files. & Demonstration \\ 
+\hline 
+\textbf{3.1-\rnumber} & IM-Net shall route all dynamically generated HTML/CSS to the Web-Server daemon. &  Basis Path Testing \\ 
+\hline 
+
+\end{tabular} 
+\end{center}
+
+\setcounter{rcounter}{0}
+\begin{center}
+\begin{tabular}{|l|p{4in}|p{2in}|}
+\hline 
+Requirement No. & Requirement Description & Testing Methodology \\ 
+\hline
+& \textbf{Controller:} & \\
+\hline
+\textbf{3.2-\rnumber} & IM-Net shall send all request data to the Interpreter function in the View module. & Basis Path Testing \\
+\hline 
+& \textbf{Registration:} & \\
+\hline
+\textbf{3.2-\rnumber} & IM-Net shall receive user registration requests. & Basis Path Testing \\
+\hline 
+\textbf{3.2-\rnumber} & IM-Net shall write user registration information to the database. & Transaction Flow Modeling\\ 
+\hline 
+\textbf{3.2-\rnumber} & IM-Net shall not allow new users access until a validation check is complete. & Basis Path Testing \\ 
+\hline 
+\textbf{3.2-\rnumber} & IM-Net shall perform user registration validations through e-mail. & Demonstration \\
+\hline 
+\textbf{3.2-\rnumber} & IM-Net validation e-mails shall include a click-back link to IM-Net. & Demonstration \\ 
+\hline 
+\textbf{3.2-\rnumber} & IM-Net shall immediately allow users access once the validation check is complete. & Transaction Flow Modeling \\ 
+\hline 
+\textbf{3.2-\rnumber} & IM-Net shall encrypt all user passwords. & Basis Path Testing \\ 
+\hline 
+\textbf{3.2-\rnumber} & IM-Net shall encrypt all user e-mail addresses. & Basis Path Testing \\
+\hline 
+& \textbf{User Authentication:} & \\
+\hline
+\textbf{3.2-\rnumber} & IM-Net shall verify all authentication information against the proper username/password combination stored in the database. & Transaction Flow Modeling \\ 
+\hline 
+\textbf{3.2-\rnumber} & IM-Net shall authenticate users before allowing access to the messaging interface. & Demonstration \\ 
+\hline 
+\textbf{3.2-\rnumber} & IM-Net shall authenticate users before allowing access to the fan interface. & Demonstration \\ 
+\hline 
+\textbf{3.2-\rnumber} & IM-Net shall authenticate user before allowing users to define favorite Artists, Label or Venues. & Demonstration \\ 
+\hline 
+& \textbf{Messaging:} & \\
+\hline
+\textbf{3.2-\rnumber} & IM-Net shall allow all users to communicate with each other through a built-in messaging interface. & Transaction Flow Modeling \\ 
+\hline 
+\textbf{3.2-\rnumber} & IM-Net messaging interface shall include a inbox that contains all messages that have been sent to the user. & Demonstration \\ 
+\hline 
+\textbf{3.2-\rnumber} & IM-Net messaging interface shall include a sent messages folders that contains all messages that the user has sent to other users. & Demonstration \\ 
+\hline 
+\textbf{3.2-\rnumber} & IM-Net messaging interface shall include a deleted messages folder that contains all messages that have been recently deleted by a user. & Demonstration \\ 
+\textbf{3.2-\rnumber} & IM-Net messaging interface shall allow all messages to have a subject line. & Demonstration \\ 
+\hline 
+\textbf{3.2-\rnumber} & IM-Net messaging interface shall allow all messages to have a message body. & Demonstration \\ 
+\hline 
+\end{tabular} 
+\end{center}
+
+\setcounter{rcounter}{0}
+\begin{center}
+\begin{tabular}{|l|p{4in}|p{2in}|}
+\hline 
+Requirement No. & Requirement Description & Testing Methodology \\ 
+\hline
+& \textbf{Music-Entity Super-class:} & \\
+\hline
+\textbf{3.3-\rnumber} & IM-Net shall store the name of each Music-Entity. & Transaction Flow Modeling \\ 
+\hline
+\textbf{3.3-\rnumber} & IM-Net shall store unique short-name of each Music-Entity. & Transaction Flow Modeling \\ 
+\hline 
+\textbf{3.3-\rnumber} & IM-Net shall store a description of each Music-Entity. & Transaction Flow Modeling \\ 
+\hline 
+\textbf{3.3-\rnumber} & IM-Net shall store a owner based upon a unique IM-Net user for each Music-Entity. & Transaction Flow Modeling \\ 
+\hline 
+\textbf{3.3-\rnumber} & IM-Net shall store all fans based upon IM-Net users for each Music-Entity. & Transaction Flow Modeling \\ 
+\hline 
+\textbf{3.3-\rnumber} & IM-Net shall store a HTTP-based URL to a Music-Entity's owner preferred web-site for each Music-Entity. & Transaction Flow Modeling \\ 
+\hline
+\textbf{3.3-\rnumber} & IM-Net shall store a image file for each Music-Entity. & Transaction Flow Modeling \\ 
+\hline
+& \textbf{Artists:} & \\
+\hline
+\textbf{3.3-\rnumber} & IM-Net shall store a musical genre for each Artist. & Transaction Flow Modeling \\ 
+\hline 
+\textbf{3.3-\rnumber} & IM-Net shall store track all collaborating Artist(s) for each music track. & Transaction Flow Modeling \\ 
+\hline
+\textbf{3.3-\rnumber} & IM-Net shall store track all collaborating Artist(s) for each music album. & Transaction Flow Modeling \\ 
+\hline
+& \textbf{Labels:} & \\
+\hline
+\textbf{3.3-\rnumber} & IM-Net shall store each Artist that has a belongs-to relationship with a Label. & Transaction Flow Modeling \\ 
+\hline 
+& \textbf{Venue:} & \\
+\hline
+\textbf{3.3-\rnumber} & IM-Net shall store a location for each Venue Music-Entity. & Transaction Flow Modeling \\ 
+\hline 
+\textbf{3.3-\rnumber} & IM-Net shall store date-specific events for each Venue/Artist(s) Music-Entity relationship. & Transaction Flow Modeling \\ 
+\hline
+
+\end{tabular} 
+\end{center}
+
+\setcounter{rcounter}{0}
+\begin{center}
+\begin{tabular}{|l|p{4in}|p{2in}|}
+\hline 
+Requirement No. & Requirement Description & Testing Methodology \\ 
+\hline
+& \textbf{Admin Controller:} & \\
+\hline
+\textbf{3.4-\rnumber} & IM-Net shall designate the highest level account setting as 'Administrator'. & Boundary Values Analysis \\ 
+\hline
+\textbf{3.4-\rnumber} & IM-Net shall assign super-user privileges to all administrator designated accounts. & Boundary Values Analysis \\ 
+\hline 
+& \textbf{Admin Interface:} & \\
+\hline
+\textbf{3.4-\rnumber} & IM-Net shall have a web-based administration interface to for maintenance of all Music-Entity data. & Demonstration \\ 
+\hline 
+\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated accounts to edit any Music-Entity Artists, Label or Venue data. & Demonstration \\ 
+\hline 
+\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated accounts to delete any Music-Entity Artist, Label or Venue data. & Demonstration \\ 
+\hline 
+& \textbf{Shell Interface:} & \\
+\hline
+\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated account to delete any other user account. & Transaction Flow Modeling \\ 
+\hline
+\textbf{3.4-\rnumber} & IM-Net shall only allow shell interface access to administrator designated accounts. & Transaction Flow Modeling \\ 
+\hline 
+\textbf{3.4-\rnumber} & IM-Net shall only allow existing administrator accounts to designate other accounts as administrator accounts. & Boundary Values Analysis \\
+\hline 
+\textbf{3.4-\rnumber} & IM-Net shall only allow accounts to be designated as administrator through the back-end shell interface. & Boundary Values Analysis \\ 
+\hline 
+\textbf{3.4-\rnumber} & IM-Net shall require all administrator account passwords to be of character length greater than or equal to 10. & Boundary Values Analysis \\ 
+\hline 
+\textbf{3.4-\rnumber} & IM-Net shall require all administrator account passwords to contain both upper-case and lower-case alphabetic characters. & Boundary Values Analysis \\
+\hline 
+\textbf{3.4-\rnumber} & IM-Net shall require all administrator account passwords to contain at least two digits. & Boundary Values Analysis \\ 
+\hline 
+\textbf{3.4-\rnumber} & IM-Net shall require all administrator account password to contain at least one non-alphanumeric character. & Boundary Values Analysis \\ 
+\hline 
+
+
+\end{tabular} 
+\end{center}
+
+\setcounter{rcounter}{0}
+\begin{center}
+\begin{tabular}{|l|p{4in}|p{2in}|}
+\hline 
+Requirement No. & Requirement Description & Testing Methodology \\
+\hline
+& \textbf{Media Store:} & \\
+\hline
+\textbf{3.5-\rnumber} & IM-Net shall store all media files into the Media Store. & Transaction Flow Modeling \\ 
+\hline
+\textbf{3.5-\rnumber} & IM-Net Media Store shall be based upon a hierarchical Artist/Album structure. & Transaction Flow Modeling \\ 
+\hline
+\textbf{3.5-\rnumber} & IM-Net shall delete all media files in the Media Store requested to be deleted by the media file owner. & Transaction Flow Modeling \\ 
+\hline
+\textbf{3.5-\rnumber} & IM-Net shall ensure that no duplicate media files exist in the Media Store. & Basis Path Testing \\ 
+\hline
+\textbf{3.5-\rnumber} & IM-Net shall ensure that all uploaded media files are limited to the MPEG-1 or MPEG-2 Audio Layer III standard (MP3). & Basis Path Testing \\ 
+\hline
+\textbf{3.5-\rnumber} & IM-Net shall ensure that all uploaded media files are tagged with title metadata. & Basis Path Testing \\ 
+\hline
+\textbf{3.5-\rnumber} & IM-Net shall ensure that all uploaded media files are tagged with artist(s) metadata. & Basis Path Testing \\ 
+\hline
+\textbf{3.5-\rnumber} & IM-Net shall ensure that all uploaded media file artist(s) tags contain a match with the user's Music-Entity name. & Basis Path Testing \\ 
+\hline
+& \textbf{Security:} & \\
+\hline
+\textbf{3.5-\rnumber} & IM-Net shall check every uploaded media file for malicious code using anti-virus software. & Basis Path Testing \\ 
+\hline
+\textbf{3.5-\rnumber} & IM-Net shall quarantine every uploaded media file until checked for malicious code using anti-virus software. & Basis Path Testing \\ 
+\hline
+\textbf{3.5-\rnumber} & IM-Net shall check every uploaded media file for malicious code using anti-virus software. & Basis Path Testing \\ 
+\hline
+\textbf{3.5-\rnumber} & IM-Net shall perform anti-virus definitions updates daily. & Basis Path Testing \\ 
+\hline
+\textbf{3.5-\rnumber} & IM-Net shall perform a complete scan of the entire media store after the anti-virus performs the daily definitions update. & \\ 
+\hline
+\textbf{3.5-\rnumber} & IM-Net shall disable media uploads if anti-virus updates cannot be completed as scheduled. & Boundary Values Analysis \\ 
+\hline 
+\textbf{3.5-\rnumber} & IM-Net shall re-enable media uploads when disabled if anti-virus updates are completed. & Boundary Values Analysis \\ 
+\hline
+\textbf{3.5-\rnumber} & IM-Net shall immediately delete any media file uploads identified by the anti-virus as compromised by malicious code. & Basis Path Testing \\ 
+\hline
+\textbf{3.5-\rnumber} & IM-Net shall notify the user if any media file uploads are identified by the anti-virus as compromised by malicious code. & Demonstration \\ 
+\hline
+\end{tabular} 
+\end{center}
+
 \eject 
 
 \appendix
@@ -564,6 +1044,8 @@ The IM-Net Functional and Performance Requirements Validation Matrix is given be
 \textbf{CSS} Cascading Style Sheets
 
 \textbf{DFD} Data Flow Diagram
+
+\textbf{HTTP} Hyper-Text Transfer Protocol
 
 \textbf{IM-Net} Independent Music Network
 
@@ -581,9 +1063,13 @@ The IM-Net Functional and Performance Requirements Validation Matrix is given be
  
 \textcolor{section}{\Section{Data Dictionary}}
 
+\underline{Compute Cloud/Cloud Services}: The delivery of computing as a service rather than a product, whereby shared resources, software, and information are provided to computers and other devices as a utility (like the electricity grid) over a network (typically the Internet).
+
 \underline{Daemon}: A computer program that runs as a background process rather than being under control of a interactive user, typically started at boot time and serves the function of responding to network requests.
 
 \underline{Django}: An open source web application framework, written in Python, which follows the Model-View-Controller architectural pattern.
+
+\underline{Metadata}: A set of data that describes and gives information about other data.
 
 \underline{Python}: A general-purpose, high-level programming language whose design philosophy emphasizes code readability and supports primarily, but not limited to, object-oriented, imperative and functional programming paradigms.
 
