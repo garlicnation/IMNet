@@ -1,9 +1,3 @@
-{% extends "messages/base.html" %} 
-{% load i18n %}
-
-{% block head %}
-{{ block.super }}
-
 
 <script>
     $(document).ready(function() {
@@ -12,10 +6,8 @@
         $("#tab_inbox").addClass("selected");
     });
 </script>
-{% endblock head %}
 
-{% block content %}
-<h1>{% trans "Inbox" %}</h1>
+<h1>Inbox</h1>
 {% if message_list %} 
 <table class="messages">
     <thead>
@@ -39,5 +31,4 @@
 </table>
 {% else %}
 <p>{% trans "No messages." %}</p>
-{% endif %}  
-{% endblock %}
+{% endif %}
