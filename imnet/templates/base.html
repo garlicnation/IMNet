@@ -42,10 +42,6 @@
     <div id="contentTabs">
         <ul id="tabs">
             {% block contentTabs %}
-            <li class="selected"><a href="#t1">Tab 1</a></li>
-            <li><a href="#t2">Tab 2</a></li>
-            <li><a href="#t3">Tab 3</a></li>
-            <li><a href="#t4">Tab 4</a></li>
             {% endblock contentTabs %}
         </ul>
     </div>
@@ -55,7 +51,7 @@
             <li id="nav_messages"><a href="/messages" title="Inbox">Messages</a></li>
             {% block sidebar %}
             {% endblock %}
-            <li><a href="/artists" title="Artist Home">Artist</a></li>
+            <li id="nav_artist"><a href="/artists" title="Artist Home">Artist</a></li>
             <li><a href="labels" title="Label Management">Label</a></li>
             <li><a href="venues" title="Venue Management">Venue</a></li>
             <li><a href="fans" title="Fanships Management">Fan</a></li>

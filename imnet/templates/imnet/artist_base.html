@@ -1,13 +1,35 @@
 {% extends "base.html" %}
-{% block title %} List of artists {% endblock %}
+{% block title %} Overriding the title, bitches {% endblock %}
+
+{% block head %}
+{{ block.super }}
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $("#nav_artist").addClass("selected");
+        var artist_nav_item = $()
+        var artist_link =
+        $("#nav_artist").append()
+    });
+</script>
+{% endblock head %}
+
 {% block content %}
-{% if artists %}
-<ul>
-    {% for artist in artists %}
-    <li><a href="/artists/{{ artist.id }}/">{{ artist.name }}</a></li>
-    {% endfor %}
-</ul>
+{% if artist %}
+<div>{{artist.name}}</div>
+<div>{{artist.description}}</div>
+<div>{{artist.genre}}</div>
+<div><a href="{{artist.website}}">{{artist.website}}</a></div>
 {% else %}
 <p>No artists listed.</p>
 {% endif %}
 {% endblock %}
+
+
+
+{% block contentTabs %}
+<li id="tab_info"><a href="/artists/{{artist.id}}/">&raquo;&nbsp;Info</a></li>
+<li id="tab_tracks"><a href="/artists/{{artist.id}}/tracks/">&raquo;&nbsp;Tracks</a></li>
+<li id="tab_albums"><a href="/artists/{{artist.id}}/albums/">&raquo;&nbsp;Albums</a></li>
+<li id="tab_trash"><a href="">&raquo;&nbsp;</a></li>
+{% endblock contentTabs %}

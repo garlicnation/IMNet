@@ -14,6 +14,12 @@ urlpatterns = patterns('',
     url(r'^artists/(?P<artist_id>\d+)/$', 'imnet.views.artist'),
     # url(r'^IMNet/', include('IMNet.foo.urls')),
 
+
+    url(r'^artists/(?P<artist_id>\d+)/tracks/$', 'imnet.views.artist_tracks'),
+    url(r'^artists/(?P<artist_id>\d+)/albums/$', 'imnet.views.artist_albums'),
+
+    url(r'^track/(?P<track_id>\d+)/$', 'imnet.views.track'),
+
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

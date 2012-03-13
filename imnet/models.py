@@ -6,7 +6,7 @@ class MusicEntity(models.Model):
     shortname = models.CharField(max_length=20)
     description = models.TextField()
     owners = models.ManyToManyField(User)
-    fans = models.ManyToManyField(User, related_name='favorites')
+    fans = models.ManyToManyField(User, related_name='favorites',blank=True, null=True)
     genre = models.TextField()
     website = models.URLField()
     main_image = models.ForeignKey('Image', blank=True, null=True)
@@ -33,7 +33,7 @@ class Album(models.Model):
     collaborators = models.ManyToManyField(Artist)
     description = models.TextField()
     release_date = models.DateField()
-#    cover_art = models.ImageField()
+    cover_art = models.ImageField(upload_to='album_images/', blank=True, null=True)
     def __unicode__(self):
         return self.title
 
@@ -42,8 +42,9 @@ class Track(models.Model):
     number = models.IntegerField()
     genre = models.CharField(max_length=60)
     artists = models.ManyToManyField(Artist)
-    album = models.ForeignKey(Album)
+    album = models.ForeignKey(Album, blank=True, null=True)
     length = models.IntegerField() #Length in seconds
+    file = models.FileField(upload_to='music/')
     def __unicode__(self):
         return self.title
 

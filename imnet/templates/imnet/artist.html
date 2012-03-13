@@ -1,5 +1,17 @@
-{% extends "base.html" %}
-{% block title %} Overriding the title, bitches {% endblock %}
+{% extends "imnet/artist_base.html" %}
+{% block title %} Overriding the title {% endblock %}
+
+{% block head %}
+{{ block.super }}
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $("#tab_info").addClass("selected");
+    });
+</script>
+{% endblock head %}
+
+
 {% block content %}
 {% if artist %}
 <div>{{artist.name}}</div>

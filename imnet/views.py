@@ -20,11 +20,36 @@ def artist(request,artist_id):
         raise Http404
     return render_to_response('imnet/artist.html', {'artist':a},context_instance=RequestContext(request))
 
+def artist_tracks(request, artist_id):
+    try:
+        a = Artist.objects.get(pk=artist_id)
+        tracks = a.track_set.all()
+        print a
+        print tracks
+        print tracks[0].file._get_url()
+    except Artist.DoesNotExist:
+        raise Http404
+    return render_to_response('imnet/artist_tracks.html', {'artist':a, 'tracks':tracks},context_instance=RequestContext(request))
+
+def artist_albums(request, artist_id):
+    try:
+        a = Artist.objects.get(pk=artist_id)
+        albums = a.album_set.all()
+        print a
+        print albums
+    except Artist.DoesNotExist:
+        raise Http404
+    return render_to_response('imnet/artist_albums.html', {'artist':a, 'albums':albums},context_instance=RequestContext(request))
+
 def artists(request):
     Artists = Artist.objects.all()[:]
     print Artists
     return render_to_response('imnet/artists.html', {'artists': Artists},context_instance=RequestContext(request))
 
+def track(request, track_id):
+    track = Track.objects.get(pk=track_id)
+
+    return render_to_response('imnet/track.html', {'track': track})
 
 def user_lookup(request, username):
     # Default return list

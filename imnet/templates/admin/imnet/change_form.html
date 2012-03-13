@@ -1,0 +1,17 @@
+{% extends "admin/change_form.html" %}
+
+{% block extrahead %}
+{{ block.super }}
+<script type="text/javascript">
+    window.onload = function (){
+    var nameField = document.getElementById("id_name");
+    var shortnameField = document.getElementById("id_shortname");
+    nameField.onkeyup = function(){
+        fieldText = nameField.value
+        fieldText = fieldText.toLowerCase();
+        fieldText = fieldText.replace(/ /g, "-");
+        shortnameField.value = fieldText;
+    };
+    };
+</script>
+{% endblock %}

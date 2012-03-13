@@ -1,0 +1,23 @@
+{% extends "imnet/artist_base.html" %}
+{% block title %} Overriding the title {% endblock %}
+
+{% block head %}
+{{ block.super }}
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $("#tab_tracks").addClass("selected");
+    });
+</script>
+{% endblock head %}
+
+
+{% block content %}
+        {% if tracks %}
+    {% for track in tracks %}
+        <p><a href="/track/{{track.id}}/">{{track.title}}</a></p><embed src="http://localhost/{{track.file.url}}" autostart="false"></embed>
+    {% endfor %}
+{% else %}
+           This artist has no tracks!
+{% endif %}
+{% endblock %}
