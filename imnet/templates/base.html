@@ -18,10 +18,10 @@
     {% if messages %}
     <script type="text/javascript">
         $(document).ready( function() {
-        {% for message in messages %}
-        $.sticky( '{{ message }} ' );
-        {% endfor %}
-        });
+            {% for message in messages %}
+                $.sticky( '{{ message }} ' );
+                {% endfor %}
+            });
     </script>
     {% endif %}
 
@@ -53,8 +53,8 @@
         {% block nav %}
         <ul id="navList">
             <li id="nav_messages"><a href="/messages" title="Inbox">Messages</a></li>
-                {% block sidebar %}
-                {% endblock %}
+            {% block sidebar %}
+            {% endblock %}
             <li><a href="/artists" title="Artist Home">Artist</a></li>
             <li><a href="labels" title="Label Management">Label</a></li>
             <li><a href="venues" title="Venue Management">Venue</a></li>
@@ -64,8 +64,8 @@
     </div>
     <div id="content">
         {% block contentPane %}
-         {% block content %}
-            <p>All page content here</p>
+        {% block content %}
+        <p>All page content here</p>
         {% endblock content %}
         {% endblock contentPane %}
     </div>

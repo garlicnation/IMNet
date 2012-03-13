@@ -2,29 +2,17 @@
 {% load i18n %}
 
 {% block head %}
-        {{ block.super }}
+{{ block.super }}
 
 <script type="text/javascript">
     $(document).ready(function (){
         $("#nav_messages").addClass("selected");
     });
-
-    $(function() {
-        $( "#contentTabs" ).tabs({
-            ajaxOptions: {
-                error: function( xhr, status, index, anchor ) {
-                    $( anchor.hash ).html(
-                            "Couldn't load this tab. We'll try to fix this as soon as possible. " +
-                                    "If this wouldn't be a demo." );
-                }
-            }
-        });
-    });
 </script>
 {% endblock head %}
 
 {% block bodyclass %}about{% endblock %}
-{% block content %}  
+{% block content %}
 {% endblock %}
 {% block contentTabs %}
 <li id="tab_inbox"><a href="{% url messages_inbox %} ">&raquo;&nbsp;{% trans "Inbox" %}</a></li>
