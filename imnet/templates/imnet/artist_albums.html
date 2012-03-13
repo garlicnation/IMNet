@@ -13,11 +13,12 @@
 
 
 {% block content %}
-        {% if tracks %}
-    {% for track in tracks %}
-        <p><a href="/track/{{track.id}}/">{{track.title}}</a></p><embed src="http://localhost/{{track.file.url}}" autostart="false"></embed>
-    {% endfor %}
+        {% if albums %}
+        {% for album in albums %}
+<h3><a href="/album/{{album.id}}/">{{album.title}}</a></h3>
+        <p>{{album.description}}</p>
+        {% endfor %}
 {% else %}
-           This artist has no tracks!
+           This artist has no albums!
 {% endif %}
 {% endblock %}

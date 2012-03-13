@@ -46,6 +46,11 @@ def artists(request):
     print Artists
     return render_to_response('imnet/artists.html', {'artists': Artists},context_instance=RequestContext(request))
 
+def labels(request):
+    Labels = Label.objects.all()[:]
+    print Labels
+    return render_to_response('imnet/labels.html', {'labels': Labels},context_instance=RequestContext(request))
+
 def track(request, track_id):
     track = Track.objects.get(pk=track_id)
 

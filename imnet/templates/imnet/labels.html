@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %} List of labels {% endblock %}
+
+{% block head %}
+{{ block.super }}
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $("#nav_label").addClass("selected");
+    });
+</script>
+{% endblock head %}
+
+
+{% block content %}
+{% if labels %}
+<ul>
+    {% for label in labels %}
+    <li><a href="/label/{{ label.id }}/">{{ label.name }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No labels listed.</p>
+{% endif %}
+{% endblock %}
