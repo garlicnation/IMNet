@@ -15,7 +15,7 @@
 {% block content %}
         {% if tracks %}
     {% for track in tracks %}
-        <p><a href="/track/{{track.id}}/">{{track.title}}</a></p><embed src="/{{track.file.url}}" autostart="false"></embed>
+        <p><a href="/track/{{track.id}}/">{{track.title}}</a></p><embed height='20'     src="/{{track.file.url}}" autostart="false"></embed>
     {% endfor %}
 {% else %}
            This artist has no tracks!

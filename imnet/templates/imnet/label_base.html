@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %} {{label.name}} {% endblock %}
+
+{% block head %}
+{{ block.super }}
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $("#nav_label").addClass("selected");
+    });
+</script>
+{% endblock head %}
+
+{% block content %}
+{% if label %}
+<div>{{label.name}}</div>
+<div>{{label.description}}</div>
+<div>{{label.genre}}</div>
+<div><a href="{{label.website}}">{{label.website}}</a></div>
+{% else %}
+<p>No artists listed.</p>
+{% endif %}
+{% endblock %}
+
+
+
+{% block contentTabs %}
+<li id="tab_info"><a href="/label/{{label.id}}/">&raquo;&nbsp;Info</a></li>
+<li id="tab_artists"><a href="/label/{{label.id}}/artists/">&raquo;&nbsp;Artists</a></li>
+<li id="tab_albums"><a href="/label/{{label.id}}/albums/">&raquo;&nbsp;Albums</a></li>
+{% endblock contentTabs %}

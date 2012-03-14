@@ -1,5 +1,4 @@
-{% extends "imnet/artist_base.html" %}
-{% block title %} Overriding the title {% endblock %}
+{% extends "imnet/label_base.html" %}
 
 {% block head %}
 {{ block.super }}
@@ -13,12 +12,12 @@
 
 
 {% block content %}
-        {% if albums %}
-        {% for album in albums %}
+{% if albums %}
+{% for album in albums %}
 <h3><a href="/album/{{album.id}}/">{{album.title}}</a></h3>
-        <p>{{album.description}}</p>
-        {% endfor %}
+<p>{{album.description}}</p>
+{% endfor %}
 {% else %}
-           This artist has no albums!
+This artist has no albums!
 {% endif %}
 {% endblock %}

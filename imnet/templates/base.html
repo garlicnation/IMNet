@@ -6,14 +6,13 @@
     <title>IM-Net</title>
     <link href="/static/css/position.css" rel="stylesheet" type="text/css" />
     <link href="/static/css/styles.css" rel="stylesheet" type="text/css" />
-    <link href="/static/css/forms.css" rel="stylesheet" type="text/css" />
     <link href="/static/css/sticky.min.css" rel="stylesheet" type="text/css" />
     <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,700,600,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Cabin+Condensed:500' rel='stylesheet' type='text/css' />
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-    <script src="/static/js/sticky.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script type="text/javascript"  src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <script type="text/javascript"  src="/static/js/sticky.min.js"></script>
 
 
     {% if messages %}
@@ -53,8 +52,8 @@
             {% block sidebar %}
             {% endblock %}
             <li id="nav_artist"><a href="/artists" title="Artist Home">Artist</a></li>
-            <li><a href="labels" title="Label Management">Label</a></li>
-            <li><a href="venues" title="Venue Management">Venue</a></li>
+            <li id="nav_label"><a href="labels" title="Label Management">Label</a></li>
+            <li id="nav_venue"><a href="/venues" title="Venue Management">Venue</a></li>
             <li><a href="fans" title="Fanships Management">Fan</a></li>
         </ul>
         {% endblock nav %}
