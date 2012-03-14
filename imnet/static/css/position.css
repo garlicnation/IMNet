@@ -6,7 +6,7 @@
 body{
 	background-color: #333333;
 	background-image: url(../images/Background_02.png);
-	font-family: "Segoe UI", sans-serif;
+	font-family: 'Open Sans', "Segoe UI", sans-serif;
 	z-index: -10;
 }
 
@@ -36,6 +36,8 @@ body{
 	-moz-transition: color 2s;
 	-webkit-transition: color 2s;
 	-o-transition: color 2s;
+	font-size: larger;
+	text-align: right;
 }
 #header {
 	float: left;
@@ -44,19 +46,19 @@ body{
 	padding:0px;
 	z-index:1;
 	border-radius: 4px 4px 0px 0px;
-	background-color:inherit;
+	background-color:rgba(255,255,255,0);
 }
 #contentTabs {
 	float: right;
 	clear: both;
 	position: relative;
-	top: 0.1em;
+	top: 2px;
 	z-index:2;
 	margin:0px;
 	/* [disabled]padding-right:25px; */
 	border: none;
 	text-align: right;
-	padding: 2px 25px 2px 0px;
+	padding: 0px 25px 4px 0px;
 	font-size: 18px;
 }
 #content {
@@ -71,8 +73,11 @@ body{
 	border-radius: 6px;
 	box-shadow: 0px 0px 10px 0px #274D7E;
 	z-index:3;
-	min-width: 44em;
+	/* [disabled]min-width: 763px; */
 	min-height: 20em;
+	width: 763px;
+	word-wrap: break-word;
+	color: #FFFFFF;
 }
 #nav {
 	/* [disabled]border: 2px solid #274D7E; */
@@ -87,7 +92,8 @@ body{
 	font-size: x-large;
 	z-index:-1;
 	padding: 0px;
-	top: 210px;
+	top: 212px;
+	word-wrap: break-word;
 }
 #footer {
 	clear: both;
