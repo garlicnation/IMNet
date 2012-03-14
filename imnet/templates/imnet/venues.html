@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %} {{label.name}} {% endblock %}
+
+{% block head %}
+{{ block.super }}
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $("#nav_venue").addClass("selected");
+    });
+</script>
+{% endblock head %}
+
+{% block content %}
+Venues coming soon!
+{% endblock %}
+
