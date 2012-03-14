@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %} Overriding the title, bitches {% endblock %}
+{% block title %} {{label.name}} {% endblock %}
 
 {% block head %}
 {{ block.super }}
@@ -25,8 +25,7 @@
 
 
 {% block contentTabs %}
-<li id="tab_info"><a href="/artists/{{artist.id}}/">&raquo;&nbsp;Info</a></li>
-<li id="tab_tracks"><a href="/artists/{{artist.id}}/tracks/">&raquo;&nbsp;Tracks</a></li>
-<li id="tab_albums"><a href="/artists/{{artist.id}}/albums/">&raquo;&nbsp;Albums</a></li>
-<li id="tab_trash"><a href="">&raquo;&nbsp;</a></li>
+<li id="tab_info"><a href="/label/{{label.id}}/">&raquo;&nbsp;Info</a></li>
+<li id="tab_artists"><a href="/label/{{label.id}}/artists/">&raquo;&nbsp;Artists</a></li>
+<li id="tab_albums"><a href="/label/{{label.id}}/albums/">&raquo;&nbsp;Albums</a></li>
 {% endblock contentTabs %}

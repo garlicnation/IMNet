@@ -1,10 +1,23 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends "imnet/label_base.html" %}
 
-</body>
-</html>
+{% block head %}
+{{ block.super }}
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $("#tab_artists").addClass("selected");
+    });
+</script>
+{% endblock head %}
+
+
+{% block content %}
+{% if artists %}
+{% for artist in artists %}
+<h3><a href="/artists/{{artist.id}}/">{{artist.name}}</a></h3>
+<p>{{artist.description}}</p>
+{% endfor %}
+{% else %}
+This label has no artists!
+{% endif %}
+{% endblock %}

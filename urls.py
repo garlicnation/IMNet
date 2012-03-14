@@ -13,6 +13,10 @@ urlpatterns = patterns('',
 
 
     url(r'^labels/$', 'imnet.views.labels'),
+    url(r'^label/(?P<label_id>\d+)/$', 'imnet.views.label'),
+    url(r'^label/(?P<label_id>\d+)/albums/$', 'imnet.views.label_albums'),
+    url(r'^label/(?P<label_id>\d+)/artists/$', 'imnet.views.label_artists'),
+
 
     url(r'^artists/$', 'imnet.views.artists'),
     url(r'^artists/(?P<artist_id>\d+)/$', 'imnet.views.artist'),

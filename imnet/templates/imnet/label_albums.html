@@ -1,0 +1,23 @@
+{% extends "imnet/label_base.html" %}
+
+{% block head %}
+{{ block.super }}
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $("#tab_albums").addClass("selected");
+    });
+</script>
+{% endblock head %}
+
+
+{% block content %}
+{% if albums %}
+{% for album in albums %}
+<h3><a href="/album/{{album.id}}/">{{album.title}}</a></h3>
+<p>{{album.description}}</p>
+{% endfor %}
+{% else %}
+This artist has no albums!
+{% endif %}
+{% endblock %}

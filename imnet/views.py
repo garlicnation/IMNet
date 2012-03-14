@@ -51,6 +51,32 @@ def labels(request):
     print Labels
     return render_to_response('imnet/labels.html', {'labels': Labels},context_instance=RequestContext(request))
 
+def label(request,label_id):
+    try:
+        l = Label.objects.get(pk=label_id)
+    except Artist.DoesNotExist:
+        raise Http404
+    return render_to_response('imnet/label.html', {'label':l},context_instance=RequestContext(request))
+
+def label_albums(request, label_id):
+    try:
+        l = Label.objects.get(pk=label_id)
+        albums = l.album_set.all()
+        print albums
+    except Artist.DoesNotExist:
+        raise Http404
+    return render_to_response('imnet/label_albums.html', {'label':l, 'albums':albums},context_instance=RequestContext(request))
+
+def label_artists(request, label_id):
+    try:
+        l = Label.objects.get(pk=label_id)
+        artists = l.artists.all()
+        print artists
+    except Artist.DoesNotExist:
+        raise Http404
+    return render_to_response('imnet/label_artists.html', {'label':l, 'artists':artists},context_instance=RequestContext(request))
+
+
 def track(request, track_id):
     track = Track.objects.get(pk=track_id)
 
