@@ -30,6 +30,9 @@ urlpatterns = patterns('',
     url(r'^track/(?P<track_id>\d+)/$', 'imnet.views.track'),
 
 
+    url(r'^album/(?P<album_id>\d+)/$', 'imnet.views.album'),
+
+
     url(r'^venues/$', direct_to_template, {'template': 'imnet/venues.html'}),
     url(r'^fans/$', direct_to_template, {'template': 'imnet/fans.html'}),
 

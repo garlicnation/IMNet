@@ -5,4 +5,13 @@
 <p>Description: {{ album.description }}</p>
 <p>Release Date: {{ album.release_date }}</p>
 <p>Label: {{ album.label }}</p>
+        <ul>
+            {% if tracks %}
+            {% for track in tracks %}
+            <li><a href="/track/{{track.id}}/">{{track.title}}</a><embed height='20'     src="/{{track.file.url}}" autostart="false"></embed></li>
+            {% endfor %}
+            {% else %}
+            This artist has no tracks!
+            {% endif %}
+        </ul>
 {% endblock %}

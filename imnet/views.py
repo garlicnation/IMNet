@@ -38,6 +38,15 @@ def artist_albums(request, artist_id):
         raise Http404
     return render_to_response('imnet/artist_albums.html', {'artist':a, 'albums':albums},context_instance=RequestContext(request))
 
+def album(request, album_id):
+    try:
+        a = Album.objects.get(pk=album_id)
+        tracks = a.track_set.all()
+    except Artist.DoesNotExist:
+        raise Http404
+    return render_to_response('imnet/album.html', {'album':a, 'tracks':tracks},context_instance=RequestContext(request))
+
+
 def artists(request):
     Artists = Artist.objects.all()[:]
     print Artists
