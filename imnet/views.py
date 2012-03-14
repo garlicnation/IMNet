@@ -24,9 +24,6 @@ def artist_tracks(request, artist_id):
     try:
         a = Artist.objects.get(pk=artist_id)
         tracks = a.track_set.all()
-        print a
-        print tracks
-        print tracks[0].file._get_url()
     except Artist.DoesNotExist:
         raise Http404
     return render_to_response('imnet/artist_tracks.html', {'artist':a, 'tracks':tracks},context_instance=RequestContext(request))
