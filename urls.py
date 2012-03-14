@@ -3,6 +3,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+from django.views.generic.simple import direct_to_template
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -27,6 +28,10 @@ urlpatterns = patterns('',
     url(r'^artists/(?P<artist_id>\d+)/albums/$', 'imnet.views.artist_albums'),
 
     url(r'^track/(?P<track_id>\d+)/$', 'imnet.views.track'),
+
+
+    url(r'^venues/$', direct_to_template, {'template': 'imnet/venues.html'}),
+    url(r'^fans/$', direct_to_template, {'template': 'imnet/fans.html'}),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
