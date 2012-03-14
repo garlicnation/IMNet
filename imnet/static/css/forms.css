@@ -1,0 +1,29 @@
+@charset "utf-8";
+/* CSS Document */
+
+form{
+}
+
+input{
+	background-color: #FF7F00;
+	color: #1240AB;
+	font-weight: bold;
+}
+input[type="text"]{
+	font-size: 18px;
+}
+input[type="password"]{
+	font-size: 18px;
+}
+input[type="button"]{
+}
+input[type="submit"]{
+	text-transform: uppercase;
+}
+textarea{
+}
+
+form#loginForm {
+
+
+}
