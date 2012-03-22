@@ -78,7 +78,9 @@ Date
 \hline 
 \textbf{Update} & \textbf{Date Released} & \textbf{Changes} \\ 
 \hline 
-Draft & March 5th, 2012 & Delivery of the Draft FRD/SDD/SID/TPD Document \\ 
+Draft & March 5th, 2012 & Delivery of the Draft FRD/SDD/SID/TPD Document \\
+\hline 
+First & March 22nd, 2012 & Required changes to FRD/SDD/SID/TPD Document for compliance \\
 \hline 
 \end{tabular} 
 
@@ -211,8 +213,8 @@ The IM-Net major functional subunits are shown in the DFD Level 1 depicted below
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.6]{DFD_level_1.pdf}
-\caption{DFD Level 1}
-\label{fig:DFD_level_1}
+\caption{Level 1 Data Flow Diagram for IM-Net}
+\label{fig:Level 1 Data Flow Diagram for IM-Net}
 \end{figure}
  
 \textcolor{subsubsection}{\subsubsection{Detailed Functional Description of the IM-Net Major Units}}
@@ -542,8 +544,8 @@ Figure 4-1 shows the sub-modules that comprise module 2.1. Next, Figure 4-2 show
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.6]{DFD_level_2_1.pdf}
-\caption{DFD Level 2.1}
-\label{fig:DFD_level_2.1}
+\caption{DFD Level 2.1, The View Module}
+\label{fig:DFD_level_2.1, The View Module}
 \end{figure}
 
 \eject
@@ -551,8 +553,8 @@ Figure 4-1 shows the sub-modules that comprise module 2.1. Next, Figure 4-2 show
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{DFD_level_2_2.pdf}
-\caption{DFD Level 2.2}
-\label{fig:DFD_level_2.2}
+\caption{DFD Level 2.2, The Content Management Module}
+\label{fig:DFD_level_2.2, The Content Management Module}
 \end{figure}
 
 \eject
@@ -560,8 +562,8 @@ Figure 4-1 shows the sub-modules that comprise module 2.1. Next, Figure 4-2 show
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.7]{DFD_level_2_3.pdf}
-\caption{DFD Level 2.3}
-\label{fig:DFD_level_2.3}
+\caption{DFD Level 2.3, The Music-Entity Module}
+\label{fig:DFD_level_2.3, The Music-Entity Module}
 \end{figure}
 
 \eject
@@ -569,8 +571,8 @@ Figure 4-1 shows the sub-modules that comprise module 2.1. Next, Figure 4-2 show
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.7]{DFD_level_2_4.pdf}
-\caption{DFD Level 2.4}
-\label{fig:DFD_level_2.4}
+\caption{DFD Level 2.4, The Admin Module}
+\label{fig:DFD_level_2.4, The Admin Module}
 \end{figure}
 
 \eject
@@ -578,8 +580,8 @@ Figure 4-1 shows the sub-modules that comprise module 2.1. Next, Figure 4-2 show
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.7]{DFD_level_2_5.pdf}
-\caption{DFD Level 2.5}
-\label{fig:DFD_level_2.5}
+\caption{DFD Level 2.5, The Media Module}
+\label{fig:DFD_level_2.5, The Media Module}
 \end{figure}
 
 \eject
@@ -587,6 +589,11 @@ Figure 4-1 shows the sub-modules that comprise module 2.1. Next, Figure 4-2 show
 \textcolor{section}{\Section{IM-Net Elements of Implementation}}
 
 In this section (some of) the modules designed in Section 4 with requirements listed in Section 3 will be implemented initially at least at the level of pseudo code. Where possible, actual code will be provided. Each module is implemented in correspondence with the design sections defined in section 2 and responding to the requirements listed in its correlated sub-section in chapter 3.
+
+The complete code repository for IM-Net is available publicly at the following web address: 
+\begin{verbatim}
+https://github.com/garlicnation/IMNet
+\end{verbatim}
 
 \textcolor{subsection}{\subsection{Music-Entity Module - models.py}}
 \begin{verbatim}
@@ -786,6 +793,197 @@ def user_lookup(request, username):
     return HttpResponse(json, mimetype='application/json')
 \end{verbatim}
 
+\textcolor{subsection}{\subsection{Administration Settings - settings.py}}
+\begin{verbatim}
+# Django settings for IMNet project.
+
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
+
+ADMINS = (
+    # ('Your Name', 'your_email@example.com'),
+)
+
+MANAGERS = ADMINS
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'IMNetDB',                      # Or path to database file if using sqlite3.
+        'USER': '',                      # Not used with sqlite3.
+        'PASSWORD': '',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+    }
+}
+
+# Local time zone for this installation. Choices can be found here:
+# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
+# although not all choices may be available on all operating systems.
+# On Unix systems, a value of None will cause Django to use the same
+# timezone as the operating system.
+# If running in a Windows environment this must be set to the same as your
+# system time zone.
+TIME_ZONE = 'America/Chicago'
+
+# Language code for this installation. All choices can be found here:
+# http://www.i18nguy.com/unicode/language-identifiers.html
+LANGUAGE_CODE = 'en-us'
+
+SITE_ID = 1
+
+# If you set this to False, Django will make some optimizations so as not
+# to load the internationalization machinery.
+USE_I18N = True
+
+# If you set this to False, Django will not format dates, numbers and
+# calendars according to the current locale
+USE_L10N = True
+
+# Absolute filesystem path to the directory that will hold user-uploaded files.
+# Example: "/home/media/media.lawrence.com/media/"
+MEDIA_ROOT = ''
+
+# URL that handles the media served from MEDIA_ROOT. Make sure to use a
+# trailing slash.
+# Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
+MEDIA_URL = ''
+
+# Absolute path to the directory static files should be collected to.
+# Don't put anything in this directory yourself; store your static files
+# in apps' "static/" subdirectories and in STATICFILES_DIRS.
+# Example: "/home/media/media.lawrence.com/static/"
+STATIC_ROOT = ''
+
+# URL prefix for static files.
+# Example: "http://media.lawrence.com/static/"
+STATIC_URL = '/static/'
+
+# URL prefix for admin static files -- CSS, JavaScript and images.
+# Make sure to use a trailing slash.
+# Examples: "http://foo.com/static/admin/", "/static/admin/".
+ADMIN_MEDIA_PREFIX = '/static/admin/'
+
+# Additional locations of static files
+STATICFILES_DIRS = (
+    '/Users/ajo/workspace/imnet/IMNet/imnet/static',
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+)
+
+# List of finder classes that know how to find static files in
+# various locations.
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
+
+# Make this unique, and don't share it with anybody.
+SECRET_KEY = '=^d(&c#b+zk20#g80x$+ebx)(-k5ce_fj0%*psngsoi(wa#c9g'
+
+# List of callables that know how to import templates from various sources.
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+#     'django.template.loaders.eggs.Loader',
+)
+
+MIDDLEWARE_CLASSES = (
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+)
+
+ROOT_URLCONF = 'IMNet.urls'
+
+TEMPLATE_DIRS = (
+    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    "J:/Programming/CS437/IMNet/imnet/templates",
+    "/Users/ajo/workspace/imnet/IMNet/imnet/templates",
+)
+
+INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    # Uncomment the next line to enable the admin:
+    'django.contrib.admin',
+    # Uncomment the next line to enable admin documentation:
+    # 'django.contrib.admindocs',
+    'imnet',
+    'registration',
+    'messages',
+)
+
+ACCOUNT_ACTIVATION_DAYS = 7
+
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_HOST_PASSWORD='imnetpass'
+EMAIL_HOST_USER='imnet.cs437@gmail.com'
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+
+# A sample logging configuration. The only tangible logging
+# performed by this configuration is to send an email to
+# the site admins on every HTTP 500 error.
+# See http://docs.djangoproject.com/en/dev/topics/logging for
+# more details on how to customize your logging configuration.
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'mail_admins': {
+            'level': 'DEBUG',
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    }
+}
+\end{verbatim}
+
+\textcolor{subsection}{\subsection{Artist - artist.html}}
+\begin{verbatim}
+{% extends "imnet/artist_base.html" %}
+{% block title %} Overriding the title {% endblock %}
+
+{% block head %}
+{{ block.super }}
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $("#tab_info").addClass("selected");
+    });
+</script>
+{% endblock head %}
+
+
+{% block content %}
+{% if artist %}
+<div>{{artist.name}}</div>
+<div>{{artist.description}}</div>
+<div>{{artist.genre}}</div>
+<div><a href="{{artist.website}}">{{artist.website}}</a></div>
+{% else %}
+<p>No artists listed.</p>
+{% endif %}
+{% endblock %}
+\end{verbatim}
+
 \eject 
 
 \textcolor{section}{\Section{IM-Net Test Plan}}
@@ -804,7 +1002,13 @@ The methodologies and testing strategies identified at this point include three 
 \item  Inspection of the software code possibly using addition inspection techniques
 \end{enumerate}
 
- 
+\textcolor{subsubsection}{\subsubsection{Basic Path Testing}}
+Basis Path Testing is a white-box testing technique that enables the test case designer to derive a logical complexity measure based on the procedural specification of a software component. This complexity measure is used as a guide for defining a basis set of execution paths to be tested. The procedural specification can be the design (pseudo-code or flowchart) or the source code itself. For classes, the operation or method procedural design will be used. As an example, assume that the following is pseudo-code of some method of some class.
+
+\textcolor{subsubsection}{\subsubsection{Boundary Value Analysis}}
+Boundary value analysis tests the behavior of a program at the boundaries. When checking a range of values, after selecting the set of data that lie in the valid partitions, next is to check how the program behaves at the boundary values of the valid partitions. Boundary value analysis is most common when checking a range of numbers. For each range, there are two boundaries, the lower boundary (start of the range) and the upper boundary (end of the range) and the boundaries are the beginning and end of each valid partition. Testing has shown that defects that arise when checking a range of values the most defects are near or at the boundaries.
+
+
 \textcolor{subsection}{\subsection{Functional Requirements Validation Matrix}}
 The IM-Net Functional and Performance Requirements Validation Matrix is given below.
 
@@ -873,7 +1077,7 @@ Requirement No. & Requirement Description & Testing Methodology \\
 \hline 
 \textbf{3.2-\rnumber} & IM-Net validation e-mails shall include a click-back link to IM-Net. & Demonstration \\ 
 \hline 
-\textbf{3.2-\rnumber} & IM-Net shall immediately allow users access once the validation check is complete. & Transaction Flow Modeling \\ 
+\textbf{3.2-\rnumber} & IM-Net shall immediately allow users access once the validation check is complete. & Demonstration \\ 
 \hline 
 \textbf{3.2-\rnumber} & IM-Net shall encrypt all user passwords. & Basis Path Testing \\ 
 \hline 
@@ -881,7 +1085,7 @@ Requirement No. & Requirement Description & Testing Methodology \\
 \hline 
 & \textbf{User Authentication:} & \\
 \hline
-\textbf{3.2-\rnumber} & IM-Net shall verify all authentication information against the proper username/password combination stored in the database. & Transaction Flow Modeling \\ 
+\textbf{3.2-\rnumber} & IM-Net shall verify all authentication information against the proper username/password combination stored in the database. & Demonstration \\ 
 \hline 
 \textbf{3.2-\rnumber} & IM-Net shall authenticate users before allowing access to the messaging interface. & Demonstration \\ 
 \hline 
@@ -891,7 +1095,7 @@ Requirement No. & Requirement Description & Testing Methodology \\
 \hline 
 & \textbf{Messaging:} & \\
 \hline
-\textbf{3.2-\rnumber} & IM-Net shall allow all users to communicate with each other through a built-in messaging interface. & Transaction Flow Modeling \\ 
+\textbf{3.2-\rnumber} & IM-Net shall allow all users to communicate with each other through a built-in messaging interface. & Demonstration \\ 
 \hline 
 \textbf{3.2-\rnumber} & IM-Net messaging interface shall include a inbox that contains all messages that have been sent to the user. & Demonstration \\ 
 \hline 
@@ -913,37 +1117,37 @@ Requirement No. & Requirement Description & Testing Methodology \\
 \hline
 & \textbf{Music-Entity Super-class:} & \\
 \hline
-\textbf{3.3-\rnumber} & IM-Net shall store the name of each Music-Entity. & Transaction Flow Modeling \\ 
+\textbf{3.3-\rnumber} & IM-Net shall store the name of each Music-Entity. & Demonstration \\ 
 \hline
-\textbf{3.3-\rnumber} & IM-Net shall store unique short-name of each Music-Entity. & Transaction Flow Modeling \\ 
+\textbf{3.3-\rnumber} & IM-Net shall store unique short-name of each Music-Entity. & Demonstration \\ 
 \hline 
-\textbf{3.3-\rnumber} & IM-Net shall store a description of each Music-Entity. & Transaction Flow Modeling \\ 
+\textbf{3.3-\rnumber} & IM-Net shall store a description of each Music-Entity. & Demonstration \\ 
 \hline 
-\textbf{3.3-\rnumber} & IM-Net shall store a owner based upon a unique IM-Net user for each Music-Entity. & Transaction Flow Modeling \\ 
+\textbf{3.3-\rnumber} & IM-Net shall store a owner based upon a unique IM-Net user for each Music-Entity. & Demonstration \\ 
 \hline 
-\textbf{3.3-\rnumber} & IM-Net shall store all fans based upon IM-Net users for each Music-Entity. & Transaction Flow Modeling \\ 
+\textbf{3.3-\rnumber} & IM-Net shall store all fans based upon IM-Net users for each Music-Entity. & Demonstration \\ 
 \hline 
-\textbf{3.3-\rnumber} & IM-Net shall store a HTTP-based URL to a Music-Entity's owner preferred web-site for each Music-Entity. & Transaction Flow Modeling \\ 
+\textbf{3.3-\rnumber} & IM-Net shall store a HTTP-based URL to a Music-Entity's owner preferred web-site for each Music-Entity. & Demonstration \\ 
 \hline
-\textbf{3.3-\rnumber} & IM-Net shall store a image file for each Music-Entity. & Transaction Flow Modeling \\ 
+\textbf{3.3-\rnumber} & IM-Net shall store a image file for each Music-Entity. & Demonstration \\ 
 \hline
 & \textbf{Artists:} & \\
 \hline
-\textbf{3.3-\rnumber} & IM-Net shall store a musical genre for each Artist. & Transaction Flow Modeling \\ 
+\textbf{3.3-\rnumber} & IM-Net shall store a musical genre for each Artist. & Demonstration \\ 
 \hline 
-\textbf{3.3-\rnumber} & IM-Net shall store track all collaborating Artist(s) for each music track. & Transaction Flow Modeling \\ 
+\textbf{3.3-\rnumber} & IM-Net shall store track all collaborating Artist(s) for each music track. & Demonstration \\ 
 \hline
-\textbf{3.3-\rnumber} & IM-Net shall store track all collaborating Artist(s) for each music album. & Transaction Flow Modeling \\ 
+\textbf{3.3-\rnumber} & IM-Net shall store track all collaborating Artist(s) for each music album. & Demonstration \\ 
 \hline
 & \textbf{Labels:} & \\
 \hline
-\textbf{3.3-\rnumber} & IM-Net shall store each Artist that has a belongs-to relationship with a Label. & Transaction Flow Modeling \\ 
+\textbf{3.3-\rnumber} & IM-Net shall store each Artist that has a belongs-to relationship with a Label. & Demonstration \\ 
 \hline 
 & \textbf{Venue:} & \\
 \hline
-\textbf{3.3-\rnumber} & IM-Net shall store a location for each Venue Music-Entity. & Transaction Flow Modeling \\ 
+\textbf{3.3-\rnumber} & IM-Net shall store a location for each Venue Music-Entity. & Demonstration \\ 
 \hline 
-\textbf{3.3-\rnumber} & IM-Net shall store date-specific events for each Venue/Artist(s) Music-Entity relationship. & Transaction Flow Modeling \\ 
+\textbf{3.3-\rnumber} & IM-Net shall store date-specific events for each Venue/Artist(s) Music-Entity relationship. & Demonstration \\ 
 \hline
 
 \end{tabular} 
@@ -971,9 +1175,9 @@ Requirement No. & Requirement Description & Testing Methodology \\
 \hline 
 & \textbf{Shell Interface:} & \\
 \hline
-\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated account to delete any other user account. & Transaction Flow Modeling \\ 
+\textbf{3.4-\rnumber} & IM-Net shall allow administrator designated account to delete any other user account. & Demonstration \\ 
 \hline
-\textbf{3.4-\rnumber} & IM-Net shall only allow shell interface access to administrator designated accounts. & Transaction Flow Modeling \\ 
+\textbf{3.4-\rnumber} & IM-Net shall only allow shell interface access to administrator designated accounts. & Demonstration \\ 
 \hline 
 \textbf{3.4-\rnumber} & IM-Net shall only allow existing administrator accounts to designate other accounts as administrator accounts. & Boundary Values Analysis \\
 \hline 
@@ -1000,11 +1204,11 @@ Requirement No. & Requirement Description & Testing Methodology \\
 \hline
 & \textbf{Media Store:} & \\
 \hline
-\textbf{3.5-\rnumber} & IM-Net shall store all media files into the Media Store. & Transaction Flow Modeling \\ 
+\textbf{3.5-\rnumber} & IM-Net shall store all media files into the Media Store. & Demonstration \\ 
 \hline
-\textbf{3.5-\rnumber} & IM-Net Media Store shall be based upon a hierarchical Artist/Album structure. & Transaction Flow Modeling \\ 
+\textbf{3.5-\rnumber} & IM-Net Media Store shall be based upon a hierarchical Artist/Album structure. & Demonstration \\ 
 \hline
-\textbf{3.5-\rnumber} & IM-Net shall delete all media files in the Media Store requested to be deleted by the media file owner. & Transaction Flow Modeling \\ 
+\textbf{3.5-\rnumber} & IM-Net shall delete all media files in the Media Store requested to be deleted by the media file owner. & Demonstration \\ 
 \hline
 \textbf{3.5-\rnumber} & IM-Net shall ensure that no duplicate media files exist in the Media Store. & Basis Path Testing \\ 
 \hline
@@ -1080,5 +1284,27 @@ Requirement No. & Requirement Description & Testing Methodology \\
 \underline{Metadata}: A set of data that describes and gives information about other data.
 
 \underline{Python}: A general-purpose, high-level programming language whose design philosophy emphasizes code readability and supports primarily, but not limited to, object-oriented, imperative and functional programming paradigms.
+
+\eject
+
+\textcolor{section}{\Section{References}}
+
+  HDMAS,
+  \emph{Hospital Digital Assistant Management System}.
+  Lu and Xie, 
+  California State University Los Angeles,
+  2009.
+
+  IM-Net,
+  \emph{Indepdent Music Network}.
+  Evelina Lurye and Carlos Estebes, 
+  California State University Los Angeles,
+  2007.
+
+  AMIRG,
+  \emph{Boundary Value Analysis}.
+  Testing Excellence, 
+  http://www.testingexcellence.com/boundary-value-analysis,
+  2012.
 
 \end{document}
